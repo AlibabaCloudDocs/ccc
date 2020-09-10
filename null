@@ -1,0 +1,44 @@
+坐席将电话转接给技能组 {#2295830}
+======================
+
+目前，在软电话面板中，坐席可以在通话中，将电话转接给指定另外一个指定坐席。但是通过集成软电话sdk的方式，可以通过api调用，在通话中将电话转给另外一个指定的技能组。
+
+### {#一、简介}一、简介 {#h3--}
+
+目前，在软电话面板中，坐席可以在通话中，将电话转接给指定另外一个指定坐席。但是通过集成软电话sdk的方式，可以通过api调用，在通话中将电话转给另外一个指定的技能组。
+
+### {#二、开发步骤}二、开发步骤 {#h3--}
+
+##### {#0、升级软电话sdk}0、升级软电话sdk {#h5-0-sdk}
+
+软电话sdk的版本最低要求是：
+
+    version-sip ==> 0.0.9
+    version-voip ==> 2.7.2
+    version-sdk ==> 0.8.6
+
+##### {#1、创建IVR流程}1、创建IVR流程 {#h5-1-ivr-}
+
+管理员到流程管理页面中创建一个ivr，这个ivr中除了开始和结束之外，只有一个转人工模块。编辑转人工模块，在`选择技能组`下拉列表中，选择`${_transfer_skill_group_id}隐藏参数`选项。给这个流程以英文命名（后续我们需要根据流程名称，调用接口查询流程路由点信息，用英文命名防止出现编码问题），保存并发布。![ivr1](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2774279951/p164787.png)![ivr2](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2774279951/p164788.png)
+
+##### {#2、在集成sdk软电话中，获取ivr路由点id}2、在集成sdk软电话中，获取ivr路由点id {#h5-2-sdk-ivr-id}
+
+每个ivr流程都有一个路由点id，转接电话时，我们将电话转接到这个ivr的路由点上，就能通过ivr来将此电话转接到指定技能组中。目前由于没有一个直接的API获取指定ivr的路由点id，需要通过以下两步，查询出路由点id：
+
+* 调用[ListContactFlows](https://help.aliyun.com/document_detail/63032.html),获取到ivr列表，根据上一步中所创建的ivr的名称，匹配列表中元素的ContactFlowName，从而拿到上一步中所创建的ivr的`InstanceId`以及`ContactFlowId`。
+* 调用[GetRoutePoint](https://help.aliyun.com/document_detail/135292.html),获取到ivr的路由点id。其中，输入参数为上一步中获取的InstanceId和ContactFlowId，返回结果中的RoutePoint是我们需要的路由点id。
+
+##### {#3、获取所要转接的技能组信息}3、获取所要转接的技能组信息 {#h5-3-}
+
+调用[ListSkillGroups](https://help.aliyun.com/document_detail/63044.html),获取到技能组列表信息。其中`AccSkillGroupName`是我们需要的信息，转接电话时，这个是其中一个参数。
+
+##### {#4、通话中，调用软电话sdk转接接口，将电话转给指定技能组}4、通话中，调用软电话sdk转接接口，将电话转给指定技能组 {#h5-4-sdk-}
+
+调用thirdCallTransfer(callee, caller, useVirNumCall, accSkillGroupName)来进行电话转接。参数含义如下：
+
+    callee: 第二步中获取到的ivr路由点id
+    caller: 传入空串''
+    useVirNumCall: 是否使用虚拟号码转接。值为true/false
+    accSkillGroupName: 第三步中获取到的技能组AccSkillGroupName
+
+调用示例：window.workbenchSdk.thirdCallTransfer('80207997', '', false, 'AliS_acc2626_55ffd226-f9ee-4d68-a85f-a92097212c3b')
