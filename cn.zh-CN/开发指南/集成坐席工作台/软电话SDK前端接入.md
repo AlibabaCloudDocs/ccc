@@ -23,11 +23,11 @@
     以上静态资源，将上面的{version-sdk}和{version-sip}替换为对应的版本号，当前最新版本号为：
     version-sip ==> 0.1.3
     version-voip ==> 2.7.8
-    version-sdk ==> 1.0.8
+    version-sdk ==> 1.0.9
 
 
 
-**您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。** 开发模式时workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.8/workbenchSdk.js](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.6/workbenchSdk.js)
+**您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。** 开发模式时workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.9/workbenchSdk.js](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.6/workbenchSdk.js)
 
 二、初始化sdk {#h2--sdk2}
 --------------------
@@ -1007,6 +1007,7 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 * 调用后，会出现如下图界面，自动播放第一条录音，
 
   ![](//static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2639562061/p173057.png)
+  
 
 
 
