@@ -7,7 +7,7 @@
 
 **通过该文档，您可以实现将坐席工作台嵌入到第三方系统中，直接在您系统中实现单点登录、接打电话等功能，并且您可以通过监听SDK中的方法来实现来电弹屏，下面的工作需要您公司的前端工程师来实施。** 
 
-![坐席工作台](//static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2639562061/p173056.png)
+![坐席工作台](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2639562061/p173056.png)
 
 一、引入sdk静态资源 {#h2--sdk-1}
 ------------------------
@@ -21,13 +21,13 @@
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter-voip/agentbar-sdk/{version-voip}/index.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/acca/workbench-sdk/{version-sdk}/workbenchSdk.min.js"></script>
     以上静态资源，将上面的{version-sdk}和{version-sip}替换为对应的版本号，当前最新版本号为：
-    version-sip ==> 0.1.3
-    version-voip ==> 2.7.8
-    version-sdk ==> 1.0.9
+    version-sip ==> 0.1.7
+    version-voip ==> 2.8.3
+    version-sdk ==> 1.1.0
 
 
 
-**您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。** 开发模式时workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.9/workbenchSdk.js](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.6/workbenchSdk.js)
+**您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。** 开发模式时workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.1.0/workbenchSdk.js](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.6/workbenchSdk.js)
 
 二、初始化sdk {#h2--sdk2}
 --------------------
@@ -1006,7 +1006,7 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
 * 调用后，会出现如下图界面，自动播放第一条录音，
 
-  ![](//static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2639562061/p173057.png)
+  ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2639562061/p173057.png)
   
 
 
