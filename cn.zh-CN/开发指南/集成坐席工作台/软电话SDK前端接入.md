@@ -21,7 +21,7 @@
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter-voip/agentbar-sdk/{version-voip}/index.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/acca/workbench-sdk/{version-sdk}/workbenchSdk.min.js"></script>
     以上静态资源，将上面的{version-sdk}和{version-sip}替换为对应的版本号，当前最新版本号为：
-    version-sip ==> 0.1.7
+    version-sip ==> 0.1.8
     version-voip ==> 2.8.3
     version-sdk ==> 1.1.0
 
@@ -34,29 +34,16 @@
 
 #### 初始化前必要的准备工作 {#h4-u521Du59CBu5316u524Du5FC5u8981u7684u51C6u5907u5DE5u4F5C}
 
-1. 必须使用
+1. 必须使用`chrome浏览器`，版本号为58以上。原因是云呼叫中心的通话是通过webRTC技术实现的，目前chrome浏览器对于webRTC技术的支持是最好的。为了保证您的通话质量及安全性，所以我们做出了这样的要求。
 
-   `chrome浏览器`
-
-   ，版本号为58以上。原因是云呼叫中心的通话是通过webRTC技术实现的，目前chrome浏览器对于webRTC技术的支持是最好的。为了保证您的通话质量及安全性，所以我们做出了这样的要求。
    
 
-2. 软电话SDK所嵌入的自有业务系统必须使用
+2. 软电话SDK所嵌入的自有业务系统必须使用`https协议`。原因是chrome在47版本之后，禁止http协议获取系统麦克风权限，会造成无法正常通话。
 
-   `https协议`
-
-   。原因是chrome在47版本之后，禁止http协议获取系统麦克风权限，会造成无法正常通话。
    
 
-3. 如果您是在
+3. 如果您是在`iframe标签`内使用软电话SDK，那么需要为iframe标签增加`allow="microphone"`属性，来允许iframe标签获取系统麦克风权限。
 
-   `iframe标签`
-
-   内使用软电话SDK，那么需要为iframe标签增加 
-
-   `allow="microphone"`
-
-   属性，来允许iframe标签获取系统麦克风权限。
    
 
 
@@ -83,38 +70,20 @@
 
 是否使用了openApiSdk，参数类型：Boolean。因为我们产品使用过程中所有接口都需要经过我们的POP接口平台，而POP接口平台对于接口的入参有一定规则（比如1.入参的key值需要大写；2.不支持数组格式，只接收arryKey.1,arryKey.2这种格式），对于接口返回结果的key首字母全部是大写，并且数组外面多包了一层，而这并不是workbenchSdk所需要的，所以用户需要再将格式转换。为了减少用户集成过程中的成本，我们workbenchSdk内部根据该配置项进行了转换。useOpenApiSdk的配置规则如下：
 
-* 如果您引入的是workbenchSdk0.2.9及以后版本，并且后端语言使用了阿里云
+* 如果您引入的是workbenchSdk0.2.9及以后版本，并且后端语言使用了阿里云[openapi-sdk](https://help.aliyun.com/document_detail/85054.html)的用户该值传true，未使用的该值传false
 
-  [openapi-sdk](https://help.aliyun.com/document_detail/85054.html)
-
-  的用户该值传true，未使用的该值传false
   
 
-* [Java版本的demo](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/ccc-crm-demo-java.zip)
+* [Java版本的demo](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/ccc-crm-demo-java.zip)中未使用[openapi-sdk](https://help.aliyun.com/document_detail/85054.html)，所以您如果使用了我们提供的[Java版本的demo](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/ccc-crm-demo-java.zip)，该值传false
 
-  中未使用
-
-  [openapi-sdk](https://help.aliyun.com/document_detail/85054.html)
-
-  ，所以您如果使用了我们提供的
-
-  [Java版本的demo](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/ccc-crm-demo-java.zip)
-
-  ，该值传false
   
 
-* [PHP版本的demo](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/ccc-crm-demo-php.zip)
+* [PHP版本的demo](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/ccc-crm-demo-php.zip)使用了[openapi-sdk](https://help.aliyun.com/document_detail/85054.html)，所以您如果使用了我们提供的PHP版本的demo，该值传true，并且因为workbenchSdk0.2.9及以后版本对于每个接口的入参和返回结果都做了转化，以前的老用户需要将之前处理接口入参和处理接口返回的逻辑去掉。
 
-  使用了
-
-  [openapi-sdk](https://help.aliyun.com/document_detail/85054.html)
-
-  ，所以您如果使用了我们提供的PHP版本的demo，该值传true，并且因为workbenchSdk0.2.9及以后版本对于每个接口的入参和返回结果都做了转化，以前的老用户需要将之前处理接口入参和处理接口返回的逻辑去掉。
   
 
-* [基于 URL 发起 HTTP/HTTPS GET 请求](https://help.aliyun.com/document_detail/85148.html?spm=a2c4g.11186623.2.4.v1BKUn)
+* [基于 URL 发起 HTTP/HTTPS GET 请求](https://help.aliyun.com/document_detail/85148.html?spm=a2c4g.11186623.2.4.v1BKUn)，该值传false，
 
-  ，该值传false，
   
 
 
@@ -708,18 +677,12 @@ sdk面板最小化Icon展示，默认为true，如果不需要该功能，可设
 
 因为软电话SDK是嵌入到了您的自有业务系统中，在软电话SDK的使用过程中，会发起多个请求到自有业务系统的服务端，请求的调用地址可以通过第4项中的ajax相关配置来设置。需要将软电话SDK发出的请求经过您的服务端转发到云呼叫中心的服务端（也就是调用云呼叫中心的openAPI），然后将返回结果透传回软电话SDK中即可。详细步骤如下：
 
-* 参考 
+* 参考 [OAuth2单点登录](~~63062~~)文档，获取到access_token；
 
-  [OAuth2单点登录](~~63062~~)
-
-  文档，获取到access_token；
   
 
-* 转发sdk发的请求到云呼叫中心服务端，根据 
+* 转发sdk发的请求到云呼叫中心服务端，根据 [API简介说明](~~85054~~)调用对应openAPI，将返回结果透传回软电话SDK即可，软电话SDK所需的返回结果必须是JSON数据格式。
 
-  [API简介说明](~~85054~~)
-
-  调用对应openAPI，将返回结果透传回软电话SDK即可，软电话SDK所需的返回结果必须是JSON数据格式。
   
 
 * 坐席，技能组等需要在阿里云云呼叫中心控制台进行配置，否则无法正常工作;
@@ -782,23 +745,8 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
 <!-- -->
 
-* 操作逻辑错误：这一类错误是用户使用呼叫中心过程中一些操作不当造成的错误，不一定是稳定重现的，这一类型的错误常见的有
+* 操作逻辑错误：这一类错误是用户使用呼叫中心过程中一些操作不当造成的错误，不一定是稳定重现的，这一类型的错误常见的有`未允许浏览器对本域名开启声卡权限`、`账号在别处登录`、`客服不在任何技能组中`、`呼叫中心网络错误`等。这类错误sdk会调用onErrorNotify方法通知外部系统，钩子函数onErrorNotify中的所有情况：
 
-  `未允许浏览器对本域名开启声卡权限`
-
-  、
-
-  `账号在别处登录`
-
-  、
-
-  `客服不在任何技能组中`
-
-  、
-
-  `呼叫中心网络错误`
-
-  等。这类错误sdk会调用onErrorNotify方法通知外部系统，钩子函数onErrorNotify中的所有情况：
   
 
 
@@ -973,24 +921,14 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
 <!-- -->
 
-* 提供了简单的录音播放和下载的方式，内部实现方式为根据contanceId调用
+* 提供了简单的录音播放和下载的方式，内部实现方式为根据contanceId调用[ListRecordingsByContactId](https://help.aliyun.com/document_detail/71532.html?spm=a2c4g.11186623.6.604.uIbPt7)获取到录音详细信息，再根据录音详细信息中的fileName去调用[DownloadRecording](https://help.aliyun.com/document_detail/65295.html?spm=a2c4g.11186623.6.603.S9YUMb)来获取录音播放的地址。所以如果您没有使用我们提供的java版crm-demo，需要您自行配置上面的两个API。
 
-  [ListRecordingsByContactId](https://help.aliyun.com/document_detail/71532.html?spm=a2c4g.11186623.6.604.uIbPt7)
-
-  获取到录音详细信息，再根据录音详细信息中的fileName去调用
-
-  [DownloadRecording](https://help.aliyun.com/document_detail/65295.html?spm=a2c4g.11186623.6.603.S9YUMb)
-
-  来获取录音播放的地址。所以如果您没有使用我们提供的java版crm-demo，需要您自行配置上面的两个API。
   
 
 * contactId获取方式：
 
-  * 根据
+  * 根据[ListCallDetailRecords](https://help.aliyun.com/document_detail/65296.html?spm=a2c4g.11186623.6.606.5piH7j)获取；
 
-    [ListCallDetailRecords](https://help.aliyun.com/document_detail/65296.html?spm=a2c4g.11186623.6.606.5piH7j)
-
-    获取；
     
   
   * 在呼入呼出时，根据onCallComing和onCallDialing两个钩子方法的参数中获取，自行存储起来。
@@ -1199,15 +1137,8 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
     
   
-  * 未使用阿里云提供的java版demo的用户，需自行配置接口API，获取语音专线列表接口API：
+  * 未使用阿里云提供的java版demo的用户，需自行配置接口API，获取语音专线列表接口API：[GetTurnServerList](~~131786~~)、获取语音专线连接的用户名密码：[GetTurnCredentials](~~131791~~)、重置坐席状态（ResetUserStatus）
 
-    [GetTurnServerList](~~131786~~)
-
-    、获取语音专线连接的用户名密码：
-
-    [GetTurnCredentials](~~131791~~)
-
-    、重置坐席状态（ResetUserStatus）
     
   
 
@@ -1430,13 +1361,8 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
 * 0.4.2(Otc 30, 2018)
 
-  * 增加虚拟号码外呼功能，管理员给配置的坐席外呼号码绑定了虚拟号码，坐席选择使用绑定了虚拟号码的外呼号码进行外呼，用户侧显示的就是虚拟手机号。未使用阿里云提供的java版demo的用户，需自行配置使用虚拟号码在线呼叫接口API(CallOnlinePrivacyNumber)：
+  * 增加虚拟号码外呼功能，管理员给配置的坐席外呼号码绑定了虚拟号码，坐席选择使用绑定了虚拟号码的外呼号码进行外呼，用户侧显示的就是虚拟手机号。未使用阿里云提供的java版demo的用户，需自行配置使用虚拟号码在线呼叫接口API(CallOnlinePrivacyNumber)：[虚拟号码在线呼叫](~~92453~~)、更新话务ID（ModifyPrivacyNumberCallDetail）：[更新话务ID](~~94928~~)
 
-    [虚拟号码在线呼叫](~~92453~~)
-
-    、更新话务ID（ModifyPrivacyNumberCallDetail）：
-
-    [更新话务ID](~~94928~~)
     
   
 
@@ -1449,9 +1375,8 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
 * 0.4.0(Sep 27, 2018)
 
-  * 增加坐席个人外呼号码功能，管理员配置了坐席外呼号码，并在技能组中开启"允许使用个人外呼号码"功能，坐席在工作时，可以选择个人外呼号码进行外呼。未使用阿里云提供的java版demo的用户，需自行配置获取坐席外呼号码API(ListOutboundPhoneNumberOfUser)：
+  * 增加坐席个人外呼号码功能，管理员配置了坐席外呼号码，并在技能组中开启"允许使用个人外呼号码"功能，坐席在工作时，可以选择个人外呼号码进行外呼。未使用阿里云提供的java版demo的用户，需自行配置获取坐席外呼号码API(ListOutboundPhoneNumberOfUser)：[获取坐席外呼号码](~~92453~~)
 
-    [获取坐席外呼号码](~~92453~~)
     
   
 
@@ -1464,20 +1389,15 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
 * 0.3.2(Sep 06, 2018)
 
-  * 增加监听功能，技能组组长及管理员角色可以使用，坐席没有权限使用。可以监听当前已接通并正在通话中的通话，仅能听到双方的实时音频。使用监听时，请务必引用本文档第一节中的最新的静态资源。未使用阿里云提供的java版demo的用户，需自行配置获取坐席状态的API：
+  * 增加监听功能，技能组组长及管理员角色可以使用，坐席没有权限使用。可以监听当前已接通并正在通话中的通话，仅能听到双方的实时音频。使用监听时，请务必引用本文档第一节中的最新的静态资源。未使用阿里云提供的java版demo的用户，需自行配置获取坐席状态的API：[获取坐席状态](~~90007~~)
 
-    [获取坐席状态](~~90007~~)
     
   
   * 增加发送漏话提醒短信功能，详情说明请查看本文档第五节中第22个方法
 
     **launchShortMessageMissedCall** 
 
-    ，未使用阿里云提供的java版demo的用户，需自行配置以下两个API：
-
-    [获取短信配置](~~89914~~)
-
-    [发送短信](~~89915~~)
+    ，未使用阿里云提供的java版demo的用户，需自行配置以下两个API：[获取短信配置、](~~89914~~)[发送短信](~~89915~~)
     
   
 
@@ -1502,9 +1422,8 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
     
   
-  * 修改通话记录接口，以前管理员可以查看所有人的通话记录，现在改成管理员也只能查看自己的通话记录。所以，未使用阿里云提供的java版demo的用户，需自行配置该 坐席工作台获取通话记录 接口（ListRecentCallRecords）：
+  * 修改通话记录接口，以前管理员可以查看所有人的通话记录，现在改成管理员也只能查看自己的通话记录。所以，未使用阿里云提供的java版demo的用户，需自行配置该 坐席工作台获取通话记录 接口（ListRecentCallRecords）：https://help.aliyun.com/document_detail/88589.html
 
-    https://help.aliyun.com/document_detail/88589.html
     
   
 
@@ -1537,9 +1456,8 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
     
   
-  * 增加发送短信满意度功能，使用此功能需要在云呼叫中心的设置页面设置开启，未使用阿里云提供的java版demo的用户，需自行配置该发送短信满意度的接口（LaunchShortMessageAppraise）：
+  * 增加发送短信满意度功能，使用此功能需要在云呼叫中心的设置页面设置开启，未使用阿里云提供的java版demo的用户，需自行配置该发送短信满意度的接口（LaunchShortMessageAppraise）：https://help.aliyun.com/document_detail/88312.html
 
-    https://help.aliyun.com/document_detail/88312.html
     
   
 
