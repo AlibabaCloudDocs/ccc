@@ -3,8 +3,6 @@ CRM Demo AK版介绍
 
 本 Demo 通过访问密钥 (AccessKey) 调用接口的方式演示了软电话与用户自有系统的集成。
 
-本 Demo 通过访问密钥 (AccessKey) 调用接口的方式演示了软电话与用户自有系统的集成。
-
 [CRM Demo AK版下载](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/crm-demo/ccc-crm-demo-ak-java.zip)
 
 背景信息 
