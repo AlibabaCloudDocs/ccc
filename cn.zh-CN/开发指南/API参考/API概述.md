@@ -1,16 +1,22 @@
-API概述
-=====
+API概述 
+==========================
+
+
 
 我们为您汇总了云呼叫中心 CCC 所有可调用 API，具体接口信息请参阅相关文档。由于文档更新可能延迟，你可以使用[可视化调试API控制台](https://api.aliyun.com/new#/?product=CCC) ，帮您快速调试。
 
-**认证方式说明如下：**
+**认证方式说明如下：** 
 
 **BEARERTOKEN** ：即为通过API URL 发起 HTTP/HTTPS GET请求，详情查看 [调用方式](http://help.aliyun-inc.com/dochelp/~~85147~~);
 
 **AK** ：即阿里云通用的，通过AccessKey调用SDK，来访问API。
 
+
+
 配置相关接口 {#LtHrC}
 ---------------
+
+
 
 |                                                               接口                                                               |        描述         |      认证方式      |
 |--------------------------------------------------------------------------------------------------------------------------------|-------------------|----------------|
@@ -18,7 +24,7 @@ API概述
 | [ListConfig](https://help.aliyun.com/document_detail/70128.html?spm=a2c4g.11186623.6.620.4bb12c61y129rP)                       | 批量获取配置            | BEARERTOKEN/AK |
 | [GetServiceExtensions](https://help.aliyun.com/document_detail/63028.html?spm=a2c4g.11186623.6.621.439e372dnPikys)             | 获取服务号码            | BEARERTOKEN/AK |
 | [RefreshToken](http://help.aliyun-inc.com/dochelp/~~63029~~)                                                                   | 刷新令牌              | BEARERTOKEN/AK |
-| [RequestLoginInfo](https://help.aliyun.com/document_detail/63030.html?spm=a2c4g.11186623.6.623.a6f8238fqoIrXr)                 | 登陆信息              | BEARERTOKEN/AK |
+| [RequestLoginInfo](https://help.aliyun.com/document_detail/63030.html?spm=a2c4g.11186623.6.623.a6f8238fqoIrXr)                 | 登录信息              | BEARERTOKEN/AK |
 | [LaunchAppraise](https://help.aliyun.com/document_detail/71562.html?spm=a2c4g.11186623.6.624.25bae285IXWCUV)                   | 发送语音满意度           | BEARERTOKEN/AK |
 | [LaunchShortMessageAppraise](https://help.aliyun.com/document_detail/88312.html?spm=a2c4g.11186623.6.625.3cff6dd10e1eHa)       | 发送短信满意度           | BEARERTOKEN/AK |
 | [GetTURNCredentials](https://help.aliyun.com/document_detail/131786.html?spm=a2c4g.11186623.6.626.6da35624R2qXd4)              | 获取语音专线的用户名密码      | BEARERTOKEN/AK |
@@ -28,8 +34,14 @@ API概述
 | [ModifyPrimaryTrunksOfSkillGroup](https://help.aliyun.com/document_detail/198051.html?spm=a2c4g.11186623.6.630.5a995806ijA6Y9) | 修改技能组线路中继配置信息     | BEARERTOKEN/AK |
 | [DisableTrunkProviders](https://help.aliyun.com/document_detail/198036.html?spm=a2c4g.11186623.6.631.7fc2794bAYEsSk)           | 注销供应商             | BEARERTOKEN/AK |
 
+
+
+
+
 联系流相关接口 {#feooS}
 ----------------
+
+
 
 |                                                                 接口                                                                  |    描述     |      认证方式      |
 |-------------------------------------------------------------------------------------------------------------------------------------|-----------|----------------|
@@ -40,41 +52,65 @@ API概述
 | [ListContactFlows](https://help.aliyun.com/document_detail/63032.html?spm=a2c4g.11186623.6.637.1db920d3WLDbvG)                      | 获取IVR流程列表 | BEARERTOKEN/AK |
 | [PublishContactFlowVersion](https://help.aliyun.com/document_detail/92782.html?spm=a2c4g.11186623.6.638.60e16232t9KboZ)             | 发布IVR流程   | BEARERTOKEN/AK |
 
+
+
+
+
 权限相关接口 {#UpnLe}
 ---------------
+
+
 
 |                                                   接口                                                    |  描述  |      认证方式      |
 |---------------------------------------------------------------------------------------------------------|------|----------------|
 | [ListRoles](https://help.aliyun.com/document_detail/63034.html?spm=a2c4g.11186623.6.640.46627a013KoHiG) | 角色列表 | BEARERTOKEN/AK |
 
+
+
+
+
 号码管理相关接口 {#AYDpZ}
 -----------------
 
-|                                                             接口                                                              |      描述       |      认证方式      |
-|-----------------------------------------------------------------------------------------------------------------------------|---------------|----------------|
-| [AddPhoneNumber](https://help.aliyun.com/document_detail/63036.html?spm=a2c4g.11186623.6.642.60b148961Xi9es)                | 新增号码          | BEARERTOKEN/AK |
-| [RemovePhoneNumber](https://help.aliyun.com/document_detail/63039.html?spm=a2c4g.11186623.6.643.3cf71575HItSLK)             | 删除号码          | BEARERTOKEN/AK |
-| [ModifyPhoneNumber](https://help.aliyun.com/document_detail/63038.html?spm=a2c4g.11186623.6.644.1bc7235duP1wi8)             | 修改号码          | BEARERTOKEN/AK |
-| [ListPhoneNumbers](http://help.aliyun-inc.com/dochelp/~~63037~~)                                                            | 电话列表          | BEARERTOKEN/AK |
-| [GetNumberRegionInfo](https://help.aliyun.com/document_detail/70127.html?spm=a2c4g.11186623.6.646.2d965136nzjoNm)           | 获取号码归属地       | BEARERTOKEN/AK |
-| [PickGlobalOutboundNumbers](https://help.aliyun.com/document_detail/70126.html?spm=a2c4g.11186623.6.647.6d20af708N0Wcn)     | 按照被叫归属地自主选择号码 | BEARERTOKEN/AK |
-| [PickLocalNumber](https://help.aliyun.com/document_detail/198052.html?spm=a2c4g.11186623.6.648.6d2270c2igswK5)              | 本地号码优先策略      | BEARERTOKEN/AK |
-| [PickOutboundNumbers](https://help.aliyun.com/document_detail/198053.html?spm=a2c4g.11186623.6.649.1df52783b9QZ1f)          | 获取外呼号码        | BEARERTOKEN/AK |
-| [AddBulkPhoneNumbers](https://help.aliyun.com/document_detail/111185.html?spm=a2c4g.11186623.6.650.6f1b5dbakKfbYg)          | 批量新增号码        | BEARERTOKEN/AK |
-| [CallOnlinePrivacyNumber](https://help.aliyun.com/document_detail/94807.html?spm=a2c4g.11186623.6.651.47c46f30JzPklS)       | 虚拟号码外呼        | BEARERTOKEN/AK |
-| [ListOutboundPhoneNumberOfUser](https://help.aliyun.com/document_detail/92453.html?spm=a2c4g.11186623.6.652.561e5e572Ax72v) | 获取坐席外呼号码      | BEARERTOKEN/AK |
-| [ModifyPrivacyNumberCallDetail](https://help.aliyun.com/document_detail/94928.html?spm=a2c4g.11186623.6.653.77b22cb7NxlAcE) | 更新话务ID        | BEARERTOKEN/AK |
+
+
+|                                                              接口                                                              |      描述       |      认证方式      |
+|------------------------------------------------------------------------------------------------------------------------------|---------------|----------------|
+| [AddPhoneNumber](https://help.aliyun.com/document_detail/63036.html?spm=a2c4g.11186623.6.642.60b148961Xi9es) | 新增号码          | BEARERTOKEN/AK |
+| [RemovePhoneNumber](https://help.aliyun.com/document_detail/63039.html?spm=a2c4g.11186623.6.643.3cf71575HItSLK)              | 删除号码          | BEARERTOKEN/AK |
+| [ModifyPhoneNumber](https://help.aliyun.com/document_detail/63038.html?spm=a2c4g.11186623.6.644.1bc7235duP1wi8)              | 修改号码          | BEARERTOKEN/AK |
+| [ListPhoneNumbers](http://help.aliyun-inc.com/dochelp/~~63037~~)                                                             | 电话列表          | BEARERTOKEN/AK |
+| [GetNumberRegionInfo](https://help.aliyun.com/document_detail/70127.html?spm=a2c4g.11186623.6.646.2d965136nzjoNm)            | 获取号码归属地       | BEARERTOKEN/AK |
+| [PickGlobalOutboundNumbers](https://help.aliyun.com/document_detail/70126.html?spm=a2c4g.11186623.6.647.6d20af708N0Wcn)      | 按照被叫归属地自主选择号码 | BEARERTOKEN/AK |
+| [PickLocalNumber](https://help.aliyun.com/document_detail/198052.html?spm=a2c4g.11186623.6.648.6d2270c2igswK5)               | 本地号码优先策略      | BEARERTOKEN/AK |
+| [PickOutboundNumbers](https://help.aliyun.com/document_detail/198053.html?spm=a2c4g.11186623.6.649.1df52783b9QZ1f)           | 获取外呼号码        | BEARERTOKEN/AK |
+| [AddBulkPhoneNumbers](https://help.aliyun.com/document_detail/111185.html?spm=a2c4g.11186623.6.650.6f1b5dbakKfbYg)           | 批量新增号码        | BEARERTOKEN/AK |
+| [CallOnlinePrivacyNumber](https://help.aliyun.com/document_detail/94807.html?spm=a2c4g.11186623.6.651.47c46f30JzPklS)        | 虚拟号码外呼        | BEARERTOKEN/AK |
+| [ListOutboundPhoneNumberOfUser](https://help.aliyun.com/document_detail/92453.html?spm=a2c4g.11186623.6.652.561e5e572Ax72v)  | 获取坐席外呼号码      | BEARERTOKEN/AK |
+| [ModifyPrivacyNumberCallDetail](https://help.aliyun.com/document_detail/94928.html?spm=a2c4g.11186623.6.653.77b22cb7NxlAcE)  | 更新话务ID        | BEARERTOKEN/AK |
+
+
+
+
 
 呼叫相关接口 {#y8rnQ}
 ---------------
+
+
 
 |                                                        接口                                                        |  描述  |      认证方式      |
 |------------------------------------------------------------------------------------------------------------------|------|----------------|
 | [StartBack2BackCall](https://help.aliyun.com/document_detail/74265.html?spm=a2c4g.11186623.6.655.4e543db6EiISsO) | 双呼   | BEARERTOKEN/AK |
 | [DialEx](https://help.aliyun.com/document_detail/142649.html?spm=a2c4g.11186623.6.656.b2223d44Jja6Uf)            | 后台外呼 | BEARERTOKEN/AK |
 
+
+
+
+
 技能组相关接口 {#eNXn5}
 ----------------
+
+
 
 |                                                               接口                                                               |       描述        |      认证方式      |
 |--------------------------------------------------------------------------------------------------------------------------------|-----------------|----------------|
@@ -88,8 +124,14 @@ API概述
 | [RemoveUsersFromSkillGroup](https://help.aliyun.com/document_detail/95881.html?spm=a2c4g.11186623.6.665.7d792cc9CfXR8H)        | 从技能组中删除坐席       | BEARERTOKEN/AK |
 | [ListTransferableSkillGroups](https://help.aliyun.com/document_detail/198016.html?spm=a2c4g.11186623.6.666.63dc66d2DI3Qkg)     | 获取呼叫中心实例的可转接技能组 | BEARERTOKEN/AK |
 
+
+
+
+
 坐席相关接口 {#n4asg}
 ---------------
+
+
 
 |                                                          接口                                                          |      描述       |      认证方式      |
 |----------------------------------------------------------------------------------------------------------------------|---------------|----------------|
@@ -107,8 +149,14 @@ API概述
 | [GetUserByExtension](https://help.aliyun.com/document_detail/197951.html?spm=a2c4g.11186623.6.679.5d271e13GOKicd)    | 通过分机号获取客服信息   | BEARERTOKEN/AK |
 | [ListInstancesOfUser](https://help.aliyun.com/document_detail/198027.html?spm=a2c4g.11186623.6.680.29be6c09hovvt7)   | 获取当前用户所属的呼叫中心 | BEARERTOKEN/AK |
 
+
+
+
+
 录音相关接口 {#WzhE9}
 ---------------
+
+
 
 |                                                            接口                                                            |     描述     |      认证方式      |
 |--------------------------------------------------------------------------------------------------------------------------|------------|----------------|
@@ -117,8 +165,14 @@ API概述
 | [DownloadAllTypeRecording](https://help.aliyun.com/document_detail/127210.html?spm=a2c4g.11186623.6.684.6e9d1d6dAYYoSX)  | 下载双轨录音     | BEARERTOKEN/AK |
 | [ListRecordingOfDualTrack](https://help.aliyun.com/document_detail/98949.html?spm=a2c4g.11186623.6.685.2c86187fXjUDkz)   | 获取通话的双轨录音  | BEARERTOKEN/AK |
 
+
+
+
+
 报表相关接口 {#23QYj}
 ---------------
+
+
 
 |                                                                   接口                                                                    |       描述       |      认证方式      |
 |-----------------------------------------------------------------------------------------------------------------------------------------|----------------|----------------|
@@ -142,8 +196,14 @@ API概述
 | [ListCallEventDetailByContactId](https://help.aliyun.com/document_detail/116011.html?spm=a2c4g.11186623.6.704.2c2974562Kc3KF)           | 根据通话ID获取通话操作日志 | BEARERTOKEN/AK |
 | [GetCallMeasureSummaryReport](https://help.aliyun.com/document_detail/95670.html?spm=a2c4g.11186623.6.705.7c165709w9FQCF)               | 查询计量数据列表       | BEARERTOKEN/AK |
 
+
+
+
+
 问题排查相关接口 {#MH1VU}
 -----------------
+
+
 
 |------------------------------------------------------------------------------------------------------------------------|--------------|----------------|
 | 接口                                                                                                                     | 描述           | 认证方式           |
@@ -153,26 +213,43 @@ API概述
 | [GetRecordOssUploadParam](https://help.aliyun.com/document_detail/120936.html?spm=a2c4g.11186623.6.710.b3814846Z7G8Na) | 获取录音上传参数     | BEARERTOKEN/AK |
 | [SaveWebRTCStats](https://help.aliyun.com/document_detail/122120.html?spm=a2c4g.11186623.6.711.28475886OrUL9u)         | 保存WebRTC统计信息 | BEARERTOKEN/AK |
 
+
+
+
+
 实例管理相关接口 {#yzeIR}
 -----------------
+
+
 
 |-----------------------------------------------------------------------------------------------------------|------------|----------------|
 | 接口                                                                                                        | 描述         | 认证方式           |
 | [GetInstance](https://help.aliyun.com/document_detail/92736.html?spm=a2c4g.11186623.6.713.79b911b3CCXsGU) | 获取呼叫中心实例详情 | BEARERTOKEN/AK |
 
+
+
+
+
 满意度相关接口 {#Iztly}
 ----------------
+
+
 
 |--------------------------------------------------------------------------------------------------------------------|---------|----------------|
 | 接口                                                                                                                 | 描述      | 认证方式           |
 | [CreateVoiceAppraise](https://help.aliyun.com/document_detail/111567.html?spm=a2c4g.11186623.6.715.7d275785AdKcRJ) | 开通语音满意度 | BEARERTOKEN/AK |
 | [ListVoiceAppraise](https://help.aliyun.com/document_detail/111569.html?spm=a2c4g.11186623.6.716.39802ac2NRhXMu)   | 语音满意度   | BEARERTOKEN/AK |
 
+
+
 短信相关接口 {#zA1g4}
 ---------------
+
+
 
 |--------------------------------------------------------------------------------------------------------------------------|--------|----------------|
 | 接口                                                                                                                       | 描述     | 认证方式           |
 | [GetSmsConfig](https://help.aliyun.com/document_detail/89914.html?spm=a2c4g.11186623.6.718.5bdb74567fANny)               | 获取短信配置 | BEARERTOKEN/AK |
 | [SendPredefinedShortMessage](https://help.aliyun.com/document_detail/89915.html?spm=a2c4g.11186623.6.719.44332c4f9vfCW8) | 发送短信   | BEARERTOKEN/AK |
+
 
