@@ -48,7 +48,7 @@ AccessKey包括AccessKey ID和AccessKey Secret。
 
 **注意** ：此处录入的 AccessKey ID 和 AccessKey Secret 对应的用户必须是所配置的云呼叫中心实例ID（instanceId）对应云呼实例的管理员，并且具有RAM管理权限。相关操作请参考：
 
-1. [instanceId(呼叫中心实例ID)获取方式](https://help.aliyun.com/document_detail/85054.html#h2-instanceid-id-2 "instanceId(呼叫中心实例ID)获取方式")
+1. [instanceId（呼叫中心实例ID）获取方式](https://help.aliyun.com/document_detail/85054.html#h2-instanceid-id-2 "instanceId(呼叫中心实例ID)获取方式")
 
    
 
