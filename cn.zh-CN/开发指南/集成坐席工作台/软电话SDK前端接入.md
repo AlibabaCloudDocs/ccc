@@ -336,7 +336,7 @@ sdk面板最小化Icon展示，默认为true，如果不需要该功能，可设
 
 #### 41.apiAxiosFunc {#h4-41-apiaxiosfunc}
 
-支持客户自己写请求接口的方法，最终返回结果为一个promise对象且返回的数据格式要和云呼叫中心公有云数据接口返回格式一致，返回的数据对象key为小写。
+支持客户自己写请求接口的方法，最终返回结果为一个promise对象且返回要和[云呼叫中心公有云数据接口返回格式](https://help.aliyun.com/document_detail/85150.html?spm=a2c4g.11186623.6.620.4b453709mk03zQ)一致，返回的数据对象key为小写。
 
     apiAxiosFunc: (apiName, params) => {
         console.log(apiName, params);
