@@ -87,7 +87,7 @@ CRMDemo 是一个集阿里云单点登录系统（基于Oauth2，以下简称Oau
 第二步：用授权码换取访问令牌 {#h2--22}
 ------------------------
 
-当Auth Server重定向至回调地址后，首先对返回的state参数做校验，然后获得授权码(code)以及初始请求中设置的redirect_uri参数值和nonce参数值(Auth Server用来判断是否是同一个站点的请求），应用直接调用如下Endpoint(https://oauth.aliyun.com/v1/token)换取访问令牌 access_token,其包含了accessToken,refresh_token,credentials,idToken,userInfo等字段.
+当Auth Server重定向至回调地址后，首先对返回的state参数做校验，然后获得授权码(code)以及初始请求中设置的redirect_uri参数值和nonce参数值(Auth Server用来判断是否是同一个站点的请求），应用直接调用如下Endpoint(https://oauth.aliyun.com/v1/token)换取访问令牌 access_token，其包含了accessToken,refresh_token,credentials,idToken,userInfo等字段。
 
 请求样例：[http://oauth.aliyun.com/v1/token?client_id=120171021\&grant_type=authorization_code\&client_secret=E1QGQUDMSqRNcOO/WTt83vQ25Bdtb0LJYSm0fFdF0eY=\&code=NTZ4wOaGVacs3oIk1sLfh8QWsF7CBfqTOEt3Sm1QJtzP3\&redirect_uri=https://127.0.0.1:8443/aliyun/auth/callback\&code_verifier=yuhT7azLRG2ZVTp5BEFWtVV5WzXWGswH2ZW0VwWrfOMoV](http://oauth.aliyun.com/v1/token?client_id=120171021&grant_type=authorization_code&client_secret=E1QGQUDMSqRNcOO/WTt83vQ25Bdtb0LJYSm0fFdF0eY=&code=NTZ4wOaGVacs3oIk1sLfh8QWsF7CBfqTOEt3Sm1QJtzP3&redirect_uri=https://127.0.0.1:8443/aliyun/auth/callback&code_verifier=yuhT7azLRG2ZVTp5BEFWtVV5WzXWGswH2ZW0VwWrfOMoV)
 
@@ -266,7 +266,7 @@ CRMDemo 是一个集阿里云单点登录系统（基于Oauth2，以下简称Oau
 
    
 
-3. 关于instanceId的获取，可以查看左侧文档目录中的 开发指南-简介中的说明。
+3. 关于instanceId的获取，可以查看左侧文档目录中的开发指南-简介中的说明。
 
    
 
