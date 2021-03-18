@@ -43,14 +43,14 @@ onCallDialing  //去电，参数表（connid,caller,calee,contactId）
 |AgentName|String|小芳|坐席名称 |
 |CalledNumber|String|15588886666|被叫号码 |
 |CallingNumber|String|80327683|主叫号码 |
-|Channel|String|null|座席所在音轨标示，默认为null |
+|Channel|String|无|已废弃字段 |
 |ContactId|String|2020927020|话务ID |
 |ContactType|String|Outbound|话务类型 |
 |Duration|Integer|10|通话时长 |
 |FileDescription|String|20180711125511-小芳|录音文件描述 |
 |FileName|String|153128491143400080327683.wav|录音文件名称 |
-|FilePath|String|oss://cloudcallcenter-test/accrec/acc9602/171032|录音文件地址 |
-|InstanceId|String|b83df335-0bfb-4204-a910-5219b30e6cb4|呼叫中心实例ID |
+|FilePath|String|无|已废弃字段 |
+|InstanceId|String|无|已废弃字段 |
 |QualityCheckTaskId|String|1F0BF809-7B30-4918-9424-4DF23A8BB9B1|智能质检任务ID |
 |QualityCheckTid|String|23A1F0BF-7B30-4918-9424-4DF8B809B9B1|智能质检文本ID |
 |StartTime|Long|1531284911000|通话开始时间 |
@@ -70,7 +70,7 @@ http(s)://ccc.cn-shanghai.aliyuncs.com/?Action=ListRecordingsByContactId
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ListRecordingsByContactIdResponse>
@@ -95,7 +95,7 @@ http(s)://ccc.cn-shanghai.aliyuncs.com/?Action=ListRecordingsByContactId
 </ListRecordingsByContactIdResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
