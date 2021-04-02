@@ -23,11 +23,11 @@
     以上静态资源，将上面的{version-sdk}和{version-sip}替换为对应的版本号，当前最新版本号为：
     version-sip ==> 0.1.8
     version-voip ==> 2.8.3
-    version-sdk ==> 1.1.0
+    version-sdk ==> 1.1.4
 
 
 
-**您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。** 开发模式时workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.1.0/workbenchSdk.js](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.6/workbenchSdk.js)
+**您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。** 开发模式时workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.1.4/workbenchSdk.js](https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.0.6/workbenchSdk.js)
 
 二、初始化sdk {#h2--sdk2}
 --------------------
@@ -94,7 +94,7 @@
 
 #### 1. header {#h4-1-header}
 
-是否展示头部(小休，下线，手机接听），默认展示，参数类型：Boolean
+是否展示头部（小休，下线，手机接听），默认展示，参数类型：Boolean
 
 #### 2. width {#h4-2-width}
 
@@ -130,7 +130,7 @@
 
 #### 10. ajaxType {#h4-10-ajaxtype}
 
-请求路径形式,值为："param" 或 "path";，默认为"param";。
+请求路径形式，值为："param" 或 "path";，默认为"param";。
 
     为"param"请求路径为 ajaxOrigin/ajaxPath?ajaxApiParamName=apiName；
     为"path"请求路径为 ajaxOrigin/ajaxPath/module/action 
@@ -147,7 +147,7 @@
 
 #### 13. withCredentials {#h4-13-withcredentials}
 
-表示跨域请求时是否需要使用凭证,是否允许携带cookie,参数类型：Boolean
+表示跨域请求时是否需要使用凭证，是否允许携带cookie，参数类型：Boolean
 
 #### 14. ajaxApiParamName {#h4-14-ajaxapiparamname}
 
@@ -370,7 +370,7 @@ sdk面板最小化Icon展示，默认为true，如果不需要该功能，可设
         exportErrorOfApi: true,
         moreActionList: ["mobilePhoneAnswer", "break", "offline"],
         onInit: function () {
-          // win.workbench.register() // 想实现自动上线在此注册
+          // window.workbench.register() // 想实现自动上线在此注册
         },
         onBeforeCallDialing: function (payload) {
            console.log('onBeforeCallDialing----->', payload)
@@ -479,11 +479,11 @@ sdk面板最小化Icon展示，默认为true，如果不需要该功能，可设
 
 #### 10. getStatusCode() {#h4-10-getstatuscode-}
 
-返回对象, 有两个属性: code是当前状态 lastCode是上一次的状态，具体参考七
+返回对象，有两个属性： code是当前状态 lastCode是上一次的状态，具体参考七
 
 #### 11. call(callee, caller, publicKey, useVirNumCall) {#h4-11-call-callee-caller-publickey-usevirnumcall-}
 
-打电话，各参数含义如下:
+打电话，各参数含义如下：
 
     callee为被叫号码不可空，必传，加密时传加密后的密文，不加密时传真实被叫号码。
     caller为主叫号码，可以指定主叫号码，也可以不传，或者传''。不传时使用面板里选择的主叫号码或技能组所绑定外呼号码的第一个,为'auto'时，根据外呼的号码的归属地选择与与其同一归属地的主叫号码，若没有同一归属地的就随机在技能组里选择一个主叫号码。
@@ -506,7 +506,7 @@ sdk面板最小化Icon展示，默认为true，如果不需要该功能，可设
 
 #### 15. offline(mobileNumber, caller) {#h4-15-offline-mobilenumber-caller-}
 
-离线坐席,对应着面板中的"手机接听";设置离线坐席以后，坐席状态为空闲状态（3）
+离线坐席，对应着面板中的"手机接听";设置离线坐席以后，坐席状态为空闲状态（3）
 
     mobileNumber: 离线坐席的手机号码
     caller: 外呼号码（可不填，不填由系统指定）
@@ -636,7 +636,7 @@ sdk面板最小化Icon展示，默认为true，如果不需要该功能，可设
 
 #### 28. thirdCallHangupThird(callee) {#h4-28-thirdcallhangupthird-callee-}
 
-三方会议中挂断第三方通话, 会议第三方是坐席callee传入坐席的分机号，第三方是外部电话callee传入电话号码
+三方会议中挂断第三方通话，会议第三方是坐席callee传入坐席的分机号，第三方是外部电话callee传入电话号码
 
 #### 29. applyForCallOnly(isCallOnly) {#h4-29-applyforcallonly-iscallonly-}
 
@@ -1422,7 +1422,7 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。
 
     
   
-  * 修改通话记录接口，以前管理员可以查看所有人的通话记录，现在改成管理员也只能查看自己的通话记录。所以，未使用阿里云提供的java版demo的用户，需自行配置该 坐席工作台获取通话记录 接口（ListRecentCallRecords）：https://help.aliyun.com/document_detail/88589.html
+  * 修改通话记录接口，以前管理员可以查看所有人的通话记录，现在改成管理员也只能查看自己的通话记录。所以，未使用阿里云提供的java版demo的用户，需自行配置该坐席工作台获取通话记录 接口（ListRecentCallRecords）：https://help.aliyun.com/document_detail/88589.html
 
     
   
