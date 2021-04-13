@@ -43,7 +43,6 @@
 |SatisfactionIndex|Float|0|满意度指数，单位%。 |
 |SatisfactionSurveysOffered|Long|0|满意度调查发送次数。 |
 |SatisfactionSurveysResponded|Long|0|满意度调查响应次数。 |
-|ServiceLevel20|Float|0|20S服务水平，单位%。电话从开始排队到接听时间少于20秒的电话数量/CallsQueued。 |
 |TotalHoldTime|Long|0|总通话保持时长，单位秒。 |
 |TotalRingTime|Long|0|总振铃时长，单位秒。 |
 |TotalTalkTime|Long|0|总通话时长，单位秒。 |
@@ -124,7 +123,6 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
     <List>
         <Inbound>
             <CallsConsulted>0</CallsConsulted>
-            <ServiceLevel20>0</ServiceLevel20>
             <TotalWorkTime>0</TotalWorkTime>
             <TotalHoldTime>0</TotalHoldTime>
             <SatisfactionSurveysOffered>0</SatisfactionSurveysOffered>
@@ -205,7 +203,6 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
 		}, {
 			"Inbound": {
 				"CallsConsulted": "0",
-				"ServiceLevel20": "0",
 				"TotalWorkTime": "0",
 				"TotalHoldTime": "0",
 				"SatisfactionSurveysOffered": "0",
