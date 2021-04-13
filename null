@@ -1,70 +1,145 @@
-事件消息定义 
-===========================
+坐席管理 
+=========================
 
 
 
-事件消息定义 
-------------------------
+概述 {#h2-u6982u8FF01}
+--------------------
 
-消息分类 {#h2-u6D88u606Fu5206u7C7B1}
---------------------------------
+**通过坐席管理页面，可管理当前呼叫中心中所有人员，包括坐席和管理员，您可以在此进行人员的增、删、改、查等基本操作。** 
 
-已发布的事件消息分为四大类：通话事件、座席事件、呼叫中心事件、录音事件。
+**新建人员** 
 
-*** ** * ** ***
+**可为呼叫中心新增人员，包括坐席、技能组组长、呼叫中心管理员** 
 
-消息格式 {#h2-u6D88u606Fu683Cu5F0F2}
---------------------------------
+* 点击 `新建` 按钮，在右侧的弹层中输入相应的内容。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8497139061/p207875.png)
 
-**通话事件** 
+  
+
+* 基本信息相关
+
+  * **用户名：** 填写后将无法修改。该字段用户自定义，长度1-64个字符，允许输入小写英文字母、数字、"."、"_"或"-"邮箱将用于接收初始密码邮件，首次登录时需重置密码。
+
+    
+  
+  * 带\*的为必填项。
+
+    
+  
+  * **姓名：** 该字段用户自定义填写，后续可以修改
+
+    
+  
+  * **个人外呼号码** ：设置之后用于坐席个人唯一单独使用的外呼号码，其他坐席不能使用；不设置的话外呼时自动选择号码外呼。
+
+    
+  
+  * **邮箱：** 用于接收坐席的登录地址以及账户密码，请务必填写正确
+
+    
+  
+  * **角色** ：分为坐席，技能组组长，管理员，请按实际业务需求选择![创建坐席](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8497139061/p207980.png)技能组相关
+
+    
+  
+
+  
+
+*
+  * 点击技能组下拉菜单，将显示当前呼叫中心已有的技能组列表。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8497139061/p207877.png)
+
+    
+  
+  * 点击底部的 `新增技能组` 按钮可新增技能组。（如需完善技能组信息，请前往技能组管理。）
+
+    
+  
+  * 输入技能组名称后，点击 `确定` 按钮即可新增技能组。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8497139061/p207879.png)
+
+    
+  
+  * 一个坐席可以加入多个不同的技能组，点击 `新增` 按钮，可将该人员添加到更多的技能组中。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p207881.png)
+
+    
+  
+  * 技能组相关信息为非必填项，也可以新建坐席后，到技能组管理，将坐席添加到技能组中。
+
+    **说明**
+
+    关于技能组等级：表示该坐席在该技能组的等级，等级区间为1-10，当客户来电经过IVR流程后进入到该技能组时，坐席分配机制为根据等级，由高到低分配；也就是将来电优先分配给等级高的坐席。
+    
+  
+
+  
+
+* 输入完毕后，点击新建坐席最底部 `确定` 后，如果输入有误，请根据提示信息修改，新建成功后将自动刷新坐席列表。
+
+  
 
 
-|------|------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 事件   | 说明               | 事件名称            | 消息字段                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 拨号   | 适用场景：外呼 ，双呼      | Dialing         | 时间            (EventTime)                         事件类型(EventType)                        话务ID(contactId)                        会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)            坐席（可选）(agentId) ：1234@XXX                        技能组（可选）(skillGroupId)            实例 (instanceId)                                                                                |
-| 呼叫振铃 | 适用场景：双呼 , 呼入     | Ringing         | 时间 (EventTime)            事件类型(EventType)                        话务ID(contactId)                        会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)                        坐席（可选）(agentId) ：1235@XXX                        目的方 （destination) : agentId , 电话号码                        技能组（可选）(skillGroupId)                        实例 (instanceId)                      |
-| 呼叫接通 | 适用场景：外呼 ，呼入，双呼   | CallEstablished | 时间 (EventTime)            事件类型(EventType)                        会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                                    主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)                        话务ID(contactId)                        坐席（可选）(agentId) ：1236@XXX                        技能组（可选）(skillGroupId)                        实例 (instanceId)                                                                    |
-| 呼叫结束 | 适用场景：外呼 ，双呼 , 呼入 | CallReleased    | 时间 (EventTime)            事件类型(EventType)                        会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)                        话务ID(contactId)                        坐席（可选）(agentId) ：1237@XXX                        技能组（可选）(skillGroupId)                        挂断方 （initiator）：主/被叫号码                        挂断原因 （ releaseReason）            实例 (instanceId) |
+
+
+**导入RAM用户** 
+
+**将阿里云主账户下的其他子账号，导入到当前呼叫中心实例** 
+
+* 导入方式中选择 `RAM导入` ，在右侧的弹层中将显示当前主账户下的所有人员（不显示当前呼叫中心中已存在的人员）。
+
+  
+
+* 选择您需要导入的人员名单后及坐席所在的技能组，点击 `确定` 按钮，即可将人员导入到当前呼叫中心中。
+
+  ![批量导入RAM用户](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p207886.png)
+
+  **文件导入坐席** 
+
+  **为了方便管理员配置坐席信息，批量创建大量坐席。** 注意：请仔细阅读页面上的提示
+  
+
+* 导入方式中选择`文件导入`，在右侧弹层中填写邮箱地址，选择坐席登录是否需要重置密码（文件导入坐席的密码都是一样的，为避免密码泄露风险，建议选择重置），填写好文件模板上传，点击`确定`按钮，即可创建大量坐席到呼叫中心中。如您导入的坐席数量过大，执行过程会较长，请耐心等待。![文件导入坐席](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p207896.png)
+
+  
+
+* 导入完成以后会有邮件发送到您的邮箱，告知您坐席登录的链接及账号密码。导入失败的坐席也会有附件告知
+
+  ![导入结果](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p207908.png)
+
+  **编辑人员**
+  
+
+* 点击相应人员所对应的 `编辑` 按钮，在右侧的弹层中进行相应的编辑，请参照 **新建人员** 。
+
+  * 编辑人员时，用户名不可修改。![编辑坐席](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p208054.png) **删除人员**
+
+    
+  
+
+  
 
 
 
-**座席事件** 
 
+<!-- -->
 
-|------|-------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 事件   | 说明    | 事件名称          | 消息字段                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| 签入   |       | AgentCheckIn  | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        结果 (result) ：0:成功、1:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                                                                                                                    |
-| 空闲   |       | AgentReady    | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        结果 (result) ：0:成功、1:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                                                                                                                    |
-| 坐席振铃 | 同呼叫振铃 | AgentRinging  | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        话务ID(contactId)                        会话 ID（connectId）            结果 (result) ：0:成功、1:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                                                 |
-| 坐席通话 |       | AgentTalk     | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        话务ID(contactId)                        会话 ID（connectId）            结果 (result) ：0:成功、1:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                                                 |
-| 直接转接 |       | BlindTransfer | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal ,Call2RoutePoint            ,PredictiveDial                        主叫号码(caller)                        被叫号码(callee)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        话务ID(contactId)                        会话 ID（connectId）                        转接类型 （transferor）                        目的方 （destination)                        结果 (result) ：0:成功、1:失败                        原因 (remark)（可选） |
-| 话后处理 |       | AgentACW      | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        话务ID(contactId)                        会话 ID（connectId）                                    结果 (result) ：0:成功、3:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                         |
-| 小休   |       | AgentBreak    | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        breakReason                        breakCode                        结果 (result) ：0:成功、1:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                                                |
-| 签出   |       | AgentCheckOut | 时间            (EventTime)                        事件类型(EventType)                        坐席 (agentId)                        技能组：(skillGroupIds)多个                        实例 (instanceId)                        结果 (result) ：0:成功、1:失败                        原因 (remark)（可选）                                                                                                                                                                                                                                                                                                                                                                    |
+* 删除单个人员，如下图中 **标注点1** ，点击 `删除` 按钮，确认后即可删除。
+
+  
+
+* 批量删除，如下图中 **标注点2** ，选中所需要删除的人员，点击 **标注点3** 的 `删除` 按钮，确认后即可删除。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p207929.png)
+
+  
 
 
 
-**呼叫中心事件** 
+**说明**
 
+如果删除的人员当前正在接听电话，则无法删除。 如当前呼叫中心中只有一个管理员，则这个唯一的管理员不可删除。
 
-|--------|-----------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 事件     | 说明              | 事件名称            | 消息字段                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| 进入IVR  |                 | Route2IVR       | 时间 (EventTime)                                    事件类型(EventType)                        会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)                        话务ID(contactId)                        联系流ID(contactFlowId)                        联系流名称 (contactFlowName)                        实例 (instanceId)                                                                                                                     |
-| 来话放弃   | IVR放弃、队列放弃、振铃放弃 | CallAbandoned   | 实例            (instanceId)                        事件类型(EventType)                        时间 (EventTime)                         会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)                        话务ID(contactId)                        放弃阶段(abandonPhase) : IVR, Queuing, Ring                        联系流ID(contactFlowId) :IVR            技能组ID (skillGroupId) : Queuing                        坐席ID (agentId) :Ring ,Queuing |
-| IVR转人工 | 队列、坐席           | Enqueue         | 实例            (instanceId)                        事件类型(EventType)                        时间 (EventTime)                         会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)            话务ID(contactId)            联系流ID(contactFlowId)                         转接类型 （queueType）: SkillGroup            , Agent                        技能组ID (skillGroupId) : Queue                        坐席ID (agentId) : ,Agent                 |
-| 排队超时   | 排队超时            | QueueingTimeout | 实例            (instanceId)                        事件类型(EventType)                        时间 (EventTime)                         会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)            话务ID(contactId)                        队列类型 （queueType）: SkillGroup , Agent                        技能组ID (skillGroupId)  SkillGroup                        坐席ID (agentId)  Agent                                                           |
-| 分配坐席   |                 | AssignAgent     | 实例            (instanceId)                        事件类型(EventType)                        时间 (EventTime)                         会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)                                    话务ID(contactId)                        队列类型 （queueType）: SkillGroup , Agent                        技能组ID (skillGrou) SkillGroup                        坐席ID (agentId)  Agent                                       |
-| 振铃超时   |                 | RingingTimeout  | 实例            (instanceId)                        事件类型(EventType)                        时间 (EventTime)                         会话 ID（connectId）                        呼叫类型(callType) :Inbound，Outbound , Back2Back ,Internal            主叫号码(caller)                        中间号码(broker)                        被叫号码(callee)            话务ID(contactId)            技能组ID (skillGrou) SkillGroup                        坐席ID (agentId)  Agent                                                                                                                                                   |
+**批量删除** 
 
+* 如果呼叫中心坐席大批量更换，通过页面操作删除的坐席人员过于繁琐，通过Excel文件批量删除已经离职坐席，管理呼叫中心坐席，删除的结果将会以邮件的形式告知您。![批量删除](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9497139061/p207940.png)
 
+  
 
-**录音事件** 
-
-
-|--------|-------------|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 事件     | 说明          | 事件名称                    | 消息字段                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| 通话详单生成 | 适用场景：获取通话数据 | CDRReady                | 事件时间(EventTime)                         事件类型(EventType)                   开始时间(StartTime)                       结束时间(EndTime)                   话务ID(ContactId)                        会话 ID(ConnectId)                        呼叫类型(CallType) :Inbound，Outbound , Back2Back ,Internal                        主叫号码(Caller)                        被叫号码(Callee)            坐席（可选）（AgentId)                        技能组，此处为技能组名称（可选）(SkillGroupIds)                    实例 (InstanceId) |
-| 原始录音生成 | 适用场景：获取录音信息 | DualTrackRecordingReady | 事件时间(EventTime)                    事件类型(EventType)                    开始时间(StartTime)                        结束时间(EndTime)                    话务ID(ContactId)                    文件名称(FileName)                    下载地址(DownloadURL)                     录音时长(Duration)                   下载地址(旧)(Url)                      坐席（可选）（AgentId) 1234@XXX                      分片（可选）(segments)                  实例 (instanceId)                                                        |
-| 录音生成   | 适用场景：获取录音信息 | RecordingReady          | 事件时间(EventTime)                    事件类型(EventType)                    开始时间(StartTime)                        结束时间(EndTime)                    话务ID(ContactId)                    文件名称(FileName)                    下载地址(DownloadURL)                     录音时长(Duration)                   下载地址(旧)(Url)                      坐席（可选）（AgentId) 1234@XXX                      分片（可选）(segments)                  实例 (instanceId)                                                        |
 
 
