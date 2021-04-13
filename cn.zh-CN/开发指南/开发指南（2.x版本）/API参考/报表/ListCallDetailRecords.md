@@ -13,10 +13,10 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|ListCallDetailRecords|系统规定参数。取值：ListCallDetailRecords。 |
-|CalledNumber|String|是|132xxxx0523|被叫号码。 |
 |InstanceId|String|是|ccc-test|呼叫中心实例ID。 |
-|PageNumber|Integer|是|1|分页序号。 |
-|PageSize|Integer|是|100|分页大小。 |
+|PageNumber|Integer|是|1|分页序号，范围1-100。 |
+|PageSize|Integer|是|100|分页大小，范围1-100。 |
+|CalledNumber|String|否|132xxxx0523|被叫号码。 |
 |CallingNumber|String|否|073xxxx7539|主叫号码。 |
 |StartTime|Long|否|1532448000000|获取的历史数据的起始时间，默认为当天的0时。 |
 |EndTime|Long|否|1532707199000|获取的历史数据的终止时间，默认为当前时间。 |
@@ -34,7 +34,6 @@
 -   AbandonedRing\(振铃放弃\)
 -   QueueOverflow\(排队超时\)
 -   OneStepTransfer\(转外线\) |
-|WithRecording|Boolean|否|true|是否需要录音。 |
 |ContactId|String|否|4321444829|通过指定的contactId来查询某一通电话的记录，contactId可以通过软电话SDK发生通话时获取到。 |
 |AgentId|String|否|ccc-user@ccc-test|坐席ID。 |
 |SkillGroupId|String|否|skg-default@ccc-test|通话涉及的技能组ID。 |
@@ -58,6 +57,7 @@
 |ContactType|String|Outbound|通话类型。取值：INBOUND（呼入），OUTBOND（呼出）。 |
 |EstablishedTime|Long|1532448000000|通话建立的时间，如果通话没有建立，此值为空。 |
 |InstanceId|String|ccc-test|呼叫中心实例ID。 |
+|RecordingReady|Boolean|true|录音是否已经生成。若通话没有建立，则返回false。 |
 |SkillGroupIds|String|skg-default@ccc-test|参与通话的座席所属的技能组ID，多个技能组以逗号分隔。 |
 |SkillGroupNames|String|默认技能组|参与通话的座席所属的技能组名称，多个技能组以逗号分隔。 |
 |StartTime|Long|1532448000000|通话开始时间，内呼从进入IVR开始，外呼从开始接通计算。 |
@@ -74,7 +74,6 @@
 
 ```
 http(s)://[Endpoint]/?Action=ListCallDetailRecords
-&CalledNumber=132xxxx0523
 &InstanceId=ccc-test
 &PageNumber=1
 &PageSize=100
