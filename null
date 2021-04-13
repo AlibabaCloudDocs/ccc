@@ -1,114 +1,78 @@
-来电弹屏 
-=========================
+开通云呼叫中心 
+============================
 
-来电弹屏，可以有效的解决与第三方客户管理系统的对接问题，当有客户来电或坐席主动呼出时，会自动调取第三方客户管理系统内的客户数据，展示给客服人员使用。
 
-**来电弹屏** 
 
-当坐席工作台响铃时，或者当坐席人员主动外呼时，云呼叫中心系统将以http get请求的方式调用第三方客户管理系统的url，并且将相关参数发送给第三方客户管理系统；同时我们以iframe嵌入的形式将第三方客户管理系统的页面显示在坐席工作台，上述的url即为iframe的页面地址，每当有新的呼入/呼出时，系统将自动刷新该iframe页面，以展示最新的客户信息。
-**说明**
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6153049061/p180206.png)
 
-iframe是HTML标签，一般用来包含别的页面，例如我们可以在我们自己的网站页面加载别人网站或者本站其他页面的内容。
+一、注册阿里云账号并进行企业认证 
+----------------------------------
 
-**一、来电弹屏如何配置** 
+1. 根据 [阿里云账号注册](https://help.aliyun.com/knowledge_detail/37195.html)文档说明，进行账号注册。
 
-* 主账号登录阿里云控制台 [https://ccc.console.aliyun.com/](https://ccc.console.aliyun.com/ "阿里云控制台")，在呼叫中心实例列表中，点击对应的来电弹屏设置即可。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9186754161/p244173.png)
+   
+
+2. 根据 [企业实名认证](https://help.aliyun.com/knowledge_detail/37172.html)文档说明，进行企业实名认证。
+
+   
+
+
+
+
+二、开通云呼叫中心 
+---------------------------
+
+选择付费类型，并开通服务 {#h2--1}
+---------------------
+
+云呼叫中心有两种付费类型，请根据您的业务需求，选择下面两种资费中的一种，开通云呼叫中心服务。具体资费情况请见[云呼叫中心资费说明](~~112566~~)
+
+一：坐席包月（[服务开通链接](https://common-buy.aliyun.com/?commodityCode=cccpre#/buy "服务开通链接")），每个坐席每个月收取一定的费用，呼入通信费全免，呼出只需0.11元/分钟；
+
+二：按量付费（[服务开通链接](https://common-buy.aliyun.com/?commodityCode=cccpost#/buy "服务开通链接")；[优惠语音包购买链接]((https://common-buy.aliyun.com/?commodityCode=cccpack_public#/buy "优惠语音包购买链接")），坐席数量无上限，每个坐席不单独收取费用，呼入0.03元/分钟，呼出0.15元/分钟，产生通话才计费。可根据自己的使用情况来决定使用哪种付费类型。优惠语音包可根据自己的实际业务需求场景决定是否购买。
+
+三、开通RAM访问控制/进行角色授权 
+------------------------------------
+
+由于阿里云众多产品所使用的账号体系都是统一的，我们称之为访问控制RAM，所以需要您来授权开通访问控制RAM；开通后，还需要您进行角色授权，从而可以新建客服，并统一来管理所有呼叫中心内的用户。这两步均只需执行一次即可。
+
+开通访问控制RAM {#h2--ram2}
+---------------------
+
+* 点击 [云呼叫中心控制台](https://ccc.console.aliyun.com/AccInstance)，如果未登录，请进行登录。
 
   
 
-* 在弹层中进行设置![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9186754161/p244174.png)
-
-  * 第一列意为该弹屏页是否显示；
-
-    
-  
-  * **页面名称** ：在坐席工作台中，该来电弹屏页面的标题名称；
-
-    
-  
-  * **页面地址** ：第三方客户管理系统的url，url填写必须为 **完整的url** ，需要包括协议、主机名等，例如[https://www.crm.com；为了保证您的通话数据的安全性，我们的呼叫中心系统仅支持https协议方式登录，所以来电弹屏也\*\*仅支持https协议\*\*的url；](https://www.crm.com；为了保证您的通话数据的安全性，我们的呼叫中心系统仅支持https协议方式登录，所以来电弹屏也**仅支持https协议**的url；)
-
-    
-  
-  * **设为首页** ：意为当坐席工作台登录上线时打开的弹屏页面，主要作用为登录第三方客户管理系统，在第一次呼入/呼出时，将自动弹出其他弹屏页面。
-
-    
-  
+* 如果显示"您尚未开通访问控制（RAM）"，需要根据系统提示开通RAM服务。如下图所示，点击 **请前往开通** 按钮
 
   
 
-* 填写完毕，点击`确定`按钮提交即可。
-
-  
-
-* 注意点：
-
-  * 每个呼叫中心实例最多配置五个来电弹屏页面；
-
-    
-  
-  * **关闭** 状态的页面，不允许设置为首页；
-
-    
-  
-  * 已经设置为首页的页面，如果将其关闭，那么将自动撤销首页状态，需要重新设置首页；
-
-    
-  
-  * 重新配置保存成功后，坐席需要刷新页面方可显示最新的来电弹屏信息；
-
-    
-  
+* 页面跳转后，如下图所示，点击 **立即开通** ；![立即开通](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2914049061/p208425.png) **角色授权**
 
   
 
 
 
 
-**二、来电弹屏如何使用** 
+<!-- -->
 
-**以首页为阿里云，其他两个页面为淘宝和天猫为例** 
-
-* 坐席人员登录坐席工作台，会直接弹出设置好的 **首页** 页面，此时并没有拼接相关参数，此时可以登录。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9186754161/p244175.png)
+* 点击 [云呼叫中心控制台](https://ccc.console.aliyun.com/AccInstance) ，如果未登录，请进行登录。
 
   
 
-* 当首次呼入/呼出时，将会弹出另外两个页面，并且url中携带了相关参数；同时首页也会携带相关参数刷新。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9186754161/p244176.gif)
+* 当进行完 **访问控制RAM授权** 后，会需要您进行角色授权，如下图所示，点击 **同意授权** 即可。![同意授权](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2914049061/p208426.png)然后您将可以看到云呼叫中心控制台界面，如下图所示![云呼控制台页面](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3914049061/p208428.png) **四、提交企业资质/购买语音号码**
 
   
 
-* 当通话结束后，如果此时需要录入通话信息等内容，此时记得点击 **`话后处理`** 按钮，否则15秒后将自动转为空闲状态，此时如果有新的来电，那么来电弹屏页面将自动刷新，之前的客户信息将丢失。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9186754161/p244177.png)
+* 云呼叫中心提供了多种号码类型可供您选择，运营商政策限制等原因号码申请流程或资源会随时改变，请关注 **申请呼叫中心电话号码** 目录下的文档，按照文档操作购买您需要的号码类型。请根据 [购买呼叫中心号码](https://help.aliyun.com/document_detail/141523.html?spm=a2c4g.11186623.6.553.60966410jEqF4g)文档说明进行操作。
 
-  
-
-* 进入 **话后处理** 状态时，将不会有新的电话接入，处理完毕后，点击 **`开始接听`** 即可。![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0286754161/p244178.png)
-
+  ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7153049061/p180211.png)
   
 
 
 
 
-**三、第三方客户管理系统的开发** 
+五、创建呼叫中心实例并开始使用 
+---------------------------------
 
-* 需要开发出一个客户详情页面，在第一步中配置的页面地址url，即为这个客户详情页的url，每次有新的呼入/呼出时，我们将刷新详情页，并且通过将相关参数拼接在url上，以http get请求的方式；
-
-  
-
-* 以天猫为例假如您填写的页面地址为：[https://www.tmall.com；那么每次呼入/呼出时，我们请求的url为：https://www.tmall.com?callNumber=18888888888\&calledNumber=057166666666\&callType=Inbound](https://www.tmall.com；那么每次呼入/呼出时，我们请求的url为：https://www.tmall.com?callNumber=18888888888&calledNumber=057166666666&callType=Inbound)
-
-  
-
-
-
-
-**四、参数说明** 
-
-
-|     参数名称     |               描述                |
-|--------------|---------------------------------|
-| callNumber   | 主叫号码                            |
-| calledNumber | 被叫号码                            |
-| callType     | 电话类型：Inbound（呼入） / Outbound（呼出） |
-| contactId    | 通话ID                            |
-
-
+请根据 [一分钟创建呼叫中心实例](https://help.aliyun.com/document_detail/60216.html?spm=a2c4g.11186623.6.558.31f7c84b9yCbmc) 文档说明进行操作。我们为您准备了功能完善的产品，快来体验吧。
