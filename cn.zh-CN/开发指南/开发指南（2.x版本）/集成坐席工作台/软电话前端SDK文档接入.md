@@ -3,17 +3,15 @@
 
 
 
-通过该文档，您可以实现将坐席工作台嵌入到第三方系统中，直接在您系统中实现单点登录、接打电话等功能，并且您可以通过监听SDK中的方法来实现来电弹屏，下面的工作需要您公司的前端工程师来实施。您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。javascriptEditor
+通过该文档，您可以实现将坐席工作台嵌入到第三方系统中，直接在您系统中实现单点登录、接打电话等功能，并且您可以通过监听SDK中的方法来实现来电弹屏，下面的工作需要您公司的前端工程师来实施。您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。
 
 一、前端资源 
 ---------------------------
 
-
-
-备注：更新前端资源版本以后，一定要在本地环境做全面测试以后再发布线上环境！您可随时关注该文档页面，SDK有更新时会第一时间更新文档页面。
+**备注：更新前端资源版本以后，一定要在本地环境做全面测试以后再发布线上环境！** 
 
     <!--sdk样式文件-->
-    <link rel="stylesheet" type="text/css" href="//g.alicdn.com/acca/workbench-sdk/{version-sdk}/main.min.css">
+    <link rel="stylesheet" type="text/css" href="//g.alicdn.com/cloudcallcenter/web-workbench-sdk/{version-sdk}/main.min.css">
     <!--sdk js文件-->
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter/SIPml/{version-sip}/SIPml-api.js"></script>
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter-voip/web-agentbar-sdk/{version-voip}/index.js"></script>
@@ -64,8 +62,8 @@ window.workbench = new WorkbenchSdk(config)
 
 2. instanceId
 
-    创建呼叫中心实例填写的域名，http://ccc.console.aliyun.com/AccV2Instance访问地址查看，
-    格式 #/workbencch/XXX(域名)
+    创建呼叫中心实例填写的域名， https://ccc.console.aliyun.com/AccV2Instance 
+    访问地址查看，格式 #/workbencch/XXX(域名)
 
 
 
@@ -684,7 +682,10 @@ window.workbench = new WorkbenchSdk(config)
 | **话务操作相关接口** | CompleteAttendedTransfer    | 咨询转接转移通话          |
 | **话务操作相关接口** | CancelAttendedTransfer      | 取消转接              |
 | **话务操作相关接口** | SendDtmfSignaling           | 发送DTMF按键          |
-| **话务操作相关接口** | MonitorCall                 | 监听                |
+| **话务操作相关接口** | MonitorCall                 | 发起监听              |
+| **话务操作相关接口** | BargeInCall                 | 监听状态下强插           |
+| **话务操作相关接口** | InterceptCall               | 监听状态下强拆           |
+| **话务操作相关接口** | Coach                       | 监听状态下辅导           |
 | **话务操作相关接口** | MuteCall                    | 静音                |
 | **话务操作相关接口** | UnmuteCall                  | 取消静音              |
 | **话务操作相关接口** | LaunchSurvey                | 发送语音满意度           |
@@ -760,6 +761,69 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。建议�
 | 17  | 咨询通话 | 取消咨询通话、咨询通话转移    |
 | 20  | 被动求助 | 挂断               |
 | 21  | 监听   | 挂断               |
+
+
+
+九、对比1.0sdk文档的更新 
+------------------------------------
+
+**一、前端资源地址有变化** 
+
+**二、config必选配置项** 
+
+* instanceId数据来源有变化，为呼叫中心填写的唯一域名
+
+  
+
+* 新增regionId配置，删除useOpenApiSdk参数
+
+  
+
+
+
+
+**三、config可选配置** 
+
+* 前端请求资源的路径配置为${ajaxOrigin}${ajaxPath}${ajaxApiParamName}=${apiName}\&product=CloudCallCenter\&version=2020-07-01\&region=${regionId}
+
+  
+
+* 回调函数onCallComing、onBeforeCallDialing、onCallDialing、onBeforeCallHangup、onCallEstablish、onErrorNotify、onStatusChange返回的参数都统一为对象格式，具体见文档说明
+
+  
+
+* 删除enableRecord配置项
+
+  
+
+
+
+
+**四、SDK方法** 
+
+* 离线坐席手机功能放到了坐席管理，通过后端接口修改坐席工作模式，不在前端SDK中提供了
+
+  
+
+
+
+
+**五、服务端准备工作，新增了话务相关的接口，详见上方文档说明** 
+
+**六、错误的code码** 
+
+* 减少了双登相关的错误码、2.0如果发现有坐席登录，第二次登录会被拦截
+
+  
+
+
+
+
+**七、状态说明** 
+
+* 小休状态错误码变成了2
+
+  
 
 
 
