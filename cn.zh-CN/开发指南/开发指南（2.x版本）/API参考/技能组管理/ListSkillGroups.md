@@ -14,7 +14,7 @@
 |InstanceId|String|是|ccc-test|呼叫中心实例ID。 |
 |PageNumber|Integer|是|1|分页序号，范围1-100。 |
 |PageSize|Integer|是|10|分页大小，范围1-100。 |
-|SearchPattern|String|是|测试技能组|根据技能组名称或展示名模糊查询。 |
+|SearchPattern|String|否|测试技能组|根据技能组名称或展示名模糊查询。 |
 
 ## 返回数据
 
@@ -46,7 +46,6 @@ http(s)://[Endpoint]/?Action=ListSkillGroups
 &InstanceId=ccc-test
 &PageNumber=1
 &PageSize=10
-&SearchPattern=defalut
 &<公共请求参数>
 ```
 
