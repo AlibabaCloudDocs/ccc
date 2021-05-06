@@ -25,7 +25,7 @@
 
 开发模式时web-agentbar-sdk推荐引入index.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-agentbar-sdk-uncompress-build/daily/1.1.5/index.js
 
-开发模式时web-workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：[https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/workbench-sdk-uncompress-build/daily/1.1.4/workbenchSdk.js](非压缩版sdk地址)
+开发模式时web-workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-workbench-sdk-uncompress-build/daily/1.1.4/workbenchSdk.js
 
 二、初始化SDK 
 -----------------------------
@@ -62,7 +62,9 @@ window.workbench = new WorkbenchSdk(config)
 
 2. instanceId
 
-    创建呼叫中心实例填写的域名， https://ccc.console.aliyun.com/AccV2Instance 
+    创建呼叫中心实例填写的域名， 
+     https://ccc.console.aliyun.com/AccV2Instance  
+    
     访问地址查看，格式 #/workbencch/XXX(域名)
 
 
