@@ -17,15 +17,15 @@
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter-voip/web-agentbar-sdk/{version-voip}/index.js"></script>
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter/web-workbench-sdk/{version-sdk}/workbenchSdk.min.js"></script>
     以上静态资源，将上面的{version-sdk}和{version-sip}替换为对应的版本号，当前最新版本号为：
-    version-sip ==> 0.1.9
-    version-voip ==> 1.1.5
-    version-sdk ==> 1.1.4
+    version-sip ==> 0.2.3
+    version-voip ==> 1.1.8
+    version-sdk ==> 1.1.6
 
 
 
-开发模式时web-agentbar-sdk推荐引入index.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-agentbar-sdk-uncompress-build/daily/1.1.5/index.js
+开发模式时web-agentbar-sdk推荐引入index.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-agentbar-sdk-uncompress-build/daily/1.1.8/index.js
 
-开发模式时web-workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-workbench-sdk-uncompress-build/daily/1.1.4/workbenchSdk.js
+开发模式时web-workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-workbench-sdk-uncompress-build/daily/1.1.6/workbenchSdk.js
 
 二、初始化SDK 
 -----------------------------
