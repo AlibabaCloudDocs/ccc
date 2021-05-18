@@ -14,7 +14,7 @@
 |InstanceId|String|是|ccc-test|呼叫中心实例ID。 |
 |PageNumber|Integer|是|1|分页序号，范围1-100。 |
 |PageSize|Integer|是|10|分页大小，范围1-100。 |
-|SkillGroupId|String|是|skg-default@ccc-test|技能组ID。 |
+|SkillGroupId|String|否|skg-default@ccc-test|技能组ID。 |
 |AgentIdList|String|否|\["user-test@ccc-test", "user-test2@ccc-test"\]|坐席ID列表，最多20个。 |
 |StateList|String|否|\["ACW", "Dialing"\]|想要查询的状态列表，为空查询全部。取值：
 
