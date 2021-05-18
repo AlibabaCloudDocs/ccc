@@ -11,10 +11,10 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|ListHistoricalAgentReport|系统规定参数。取值：ListHistoricalAgentReport。 |
-|AgentIdList|String|是|\["user-test@ccc-test", "user-test2@ccc-test"\]|坐席ID列表。 |
 |InstanceId|String|是|ccc-test|呼叫中心实例ID。 |
 |PageNumber|Integer|是|1|分页序号，范围1-100。 |
 |PageSize|Integer|是|100|分页大小，范围1-100。 |
+|AgentIdList|String|否|\["user-test@ccc-test", "user-test2@ccc-test"\]|坐席ID列表。 |
 |StartTime|Long|否|1532448000000|获取的历史数据的起始时间，默认为当天的0时。 |
 |StopTime|Long|否|1532707199000|获取的历史数据的终止时间，默认为当前时间。 |
 
@@ -28,6 +28,7 @@
 |AgentId|String|user-test@ccc-test|座席ID，等同于userId。 |
 |AgentName|String|云呼测试坐席|坐席姓名。 |
 |Inbound|Struct| |呼入指标。 |
+|AverageHoldTime|Float|0|平均通话保持时长，单位秒。 |
 |AverageRingTime|Float|0|平均振铃时长，单位秒。 |
 |AverageTalkTime|Float|0|平均通话时长，单位秒。 |
 |AverageWorkTime|Float|0|平均话后处理时长，单位秒。 |
@@ -37,6 +38,7 @@
 |CallsOffered|Long|0|电话呼入数。 |
 |CallsTransfered|Long|0|电话的转接数，包括咨询转和盲转。 |
 |HandleRate|Float|0|应答率，单位%。CallsHandled / CallsQueued |
+|MaxHoldTime|Long|0|最大通话保持时长，单位秒。 |
 |MaxRingTime|Long|0|最大振铃时长，单位秒。 |
 |MaxTalkTime|Long|0|最大通话时长，单位秒。 |
 |MaxWorkTime|Long|0|最大话后处理时长，单位秒。 |
@@ -50,11 +52,15 @@
 |Outbound|Struct| |呼出指标。 |
 |AnswerRate|Float|0|接通率，单位%。 |
 |AverageDialingTime|Float|0|平均拨号时长，单位秒。 |
+|AverageHoldTime|Float|0|平均通话保持时长，单位秒。 |
 |AverageTalkTime|Float|0|平均通话时长，单位秒。 |
 |AverageWorkTime|Float|0|平均话后处理时长，单位秒。 |
 |CallsAnswered|Long|0|电话接通量。 |
 |CallsDialed|Long|0|电话拨号量。 |
+|CallsDialedSuccess|Long|0|电话拨号成功量。 |
+|CallsHold|Long|0|通话保持的电话数量。一通电话hold多次算一次，多次hold时长的总和算本次通话的保持时长。 |
 |MaxDialingTime|Long|0|最大拨号时长，单位秒。 |
+|MaxHoldTime|Long|0|最大通话保持时长，单位秒。 |
 |MaxTalkTime|Long|0|最大通话时长，单位秒。 |
 |MaxWorkTime|Long|0|最大话后处理时长，单位秒。 |
 |SatisfactionIndex|Float|0|满意度指数，单位%。 |
@@ -119,13 +125,12 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
     <List>
         <AgentName>云呼测试坐席</AgentName>
         <AgentId>user-test@ccc-test</AgentId>
-    </List>
-    <List>
         <Inbound>
             <CallsConsulted>0</CallsConsulted>
             <TotalWorkTime>0</TotalWorkTime>
             <TotalHoldTime>0</TotalHoldTime>
             <SatisfactionSurveysOffered>0</SatisfactionSurveysOffered>
+            <AverageHoldTime>0</AverageHoldTime>
             <MaxRingTime>0</MaxRingTime>
             <CallsOffered>0</CallsOffered>
             <SatisfactionIndex>0</SatisfactionIndex>
@@ -140,6 +145,7 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
             <MaxTalkTime>0</MaxTalkTime>
             <AverageWorkTime>0</AverageWorkTime>
             <MaxWorkTime>0</MaxWorkTime>
+            <MaxHoldTime>0</MaxHoldTime>
             <AverageTalkTime>0</AverageTalkTime>
         </Inbound>
         <Outbound>
@@ -147,7 +153,10 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
             <TotalWorkTime>0</TotalWorkTime>
             <TotalHoldTime>0</TotalHoldTime>
             <SatisfactionSurveysOffered>0</SatisfactionSurveysOffered>
+            <CallsDialedSuccess>0</CallsDialedSuccess>
+            <AverageHoldTime>0</AverageHoldTime>
             <SatisfactionIndex>0</SatisfactionIndex>
+            <CallsHold>0</CallsHold>
             <SatisfactionSurveysResponded>0</SatisfactionSurveysResponded>
             <AverageDialingTime>0</AverageDialingTime>
             <CallsAnswered>0</CallsAnswered>
@@ -157,6 +166,7 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
             <MaxTalkTime>0</MaxTalkTime>
             <AverageWorkTime>0</AverageWorkTime>
             <MaxWorkTime>0</MaxWorkTime>
+            <MaxHoldTime>0</MaxHoldTime>
             <AverageTalkTime>0</AverageTalkTime>
             <AnswerRate>0</AnswerRate>
         </Outbound>
@@ -199,13 +209,13 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
 		"PageNumber": "1",
 		"List": [{
 			"AgentName": "云呼测试坐席",
-			"AgentId": "user-test@ccc-test"
-		}, {
+			"AgentId": "user-test@ccc-test",
 			"Inbound": {
 				"CallsConsulted": "0",
 				"TotalWorkTime": "0",
 				"TotalHoldTime": "0",
 				"SatisfactionSurveysOffered": "0",
+				"AverageHoldTime": "0",
 				"MaxRingTime": "0",
 				"CallsOffered": "0",
 				"SatisfactionIndex": "0",
@@ -220,6 +230,7 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
 				"MaxTalkTime": "0",
 				"AverageWorkTime": "0",
 				"MaxWorkTime": "0",
+				"MaxHoldTime": "0",
 				"AverageTalkTime": "0"
 			},
 			"Outbound": {
@@ -227,7 +238,10 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
 				"TotalWorkTime": "0",
 				"TotalHoldTime": "0",
 				"SatisfactionSurveysOffered": "0",
+				"CallsDialedSuccess": "0",
+				"AverageHoldTime": "0",
 				"SatisfactionIndex": "0",
+				"CallsHold": "0",
 				"SatisfactionSurveysResponded": "0",
 				"AverageDialingTime": "0",
 				"CallsAnswered": "0",
@@ -237,6 +251,7 @@ http(s)://[Endpoint]/?Action=ListHistoricalAgentReport
 				"MaxTalkTime": "0",
 				"AverageWorkTime": "0",
 				"MaxWorkTime": "0",
+				"MaxHoldTime": "0",
 				"AverageTalkTime": "0",
 				"AnswerRate": "0"
 			},
