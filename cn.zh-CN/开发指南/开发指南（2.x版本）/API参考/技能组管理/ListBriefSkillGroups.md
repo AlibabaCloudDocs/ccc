@@ -14,7 +14,7 @@
 |InstanceId|String|是|ccc-test|呼叫中心实例ID。 |
 |PageNumber|Integer|是|1|分页序号，范围1-100。 |
 |PageSize|Integer|是|10|分页大小，范围1-100。 |
-|SearchPattern|String|是|user-test|基于名称过滤。 |
+|SearchPattern|String|否|user-test|基于名称过滤。 |
 
 ## 返回数据
 
