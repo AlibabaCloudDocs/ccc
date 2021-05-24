@@ -27,18 +27,22 @@
 -   Back2Back（双呼） |
 |ContactDisposition|String|否|Success|按挂断类型筛选。取值：
 
- -   Success\(正常\)
--   NoAnswer\(未接通\)
--   AbandonedInContactFlow\(IVR中放弃\)
--   AbandonedInQueue\(排队放弃\)
--   AbandonedRing\(振铃放弃\)
--   QueueOverflow\(排队超时\)
--   OneStepTransfer\(转外线\) |
+ -   Success（正常）
+-   NoAnswer（未接通）
+-   AbandonedInContactFlow（IVR中放弃）
+-   AbandonedInQueue（排队放弃）
+-   AbandonedRing（振铃放弃）
+-   Reject（客户拒接） |
 |ContactId|String|否|4321444829|通过指定的contactId来查询某一通电话的记录，contactId可以通过软电话SDK发生通话时获取到。 |
 |AgentId|String|否|ccc-user@ccc-test|坐席ID。 |
 |SkillGroupId|String|否|skg-default@ccc-test|通话涉及的技能组ID。 |
 |SortOrder|String|否|ASC|如果OrderByField为空，默认按开始时间降序排列。取值: ASC/DESC。 |
 |OrderByField|String|否|statTime|排序字段。 |
+|SatisfactionList|String|否|\["1", "3"\]|String类型的满意度列表。 |
+|SatisfactionSurveyChannel|String|否|IVR|满意度调查渠道：
+
+ -   IVR（语音满意度）
+-   SMS（短信满意度） |
 
 ## 返回数据
 
@@ -52,12 +56,20 @@
 |CallDuration|String|30|通话时长，单位秒。 |
 |CalledNumber|String|133xxxx2315|被叫号码。 |
 |CallingNumber|String|053xxxx3128|主叫号码。 |
-|ContactDisposition|String|Success|电话结束原因。 Success\(正常\)，NoAnswer\(未接通\)，AbandonedInContactFlow\(IVR中放弃\)，AbandonedInQueue\(排队放弃\)，AbandonedRing\(振铃放弃\)，QueueOverflow\(排队超时\)，OneStepTransfer\(转外线\)。 |
+|ContactDisposition|String|Success|电话结束原因。 Success\(正常\)，NoAnswer\(未接通\)，AbandonedInContactFlow\(IVR中放弃\)，AbandonedInQueue\(排队放弃\)，AbandonedRing\(振铃放弃\)，Reject\(客户拒接\)，OneStepTransfer\(转外线\)。 |
 |ContactId|String|job-76604722428454704|通话ID。 |
 |ContactType|String|Outbound|通话类型。取值：INBOUND（呼入），OUTBOND（呼出）。 |
 |EstablishedTime|Long|1532448000000|通话建立的时间，如果通话没有建立，此值为空。 |
 |InstanceId|String|ccc-test|呼叫中心实例ID。 |
 |RecordingReady|Boolean|true|录音是否已经生成。若通话没有建立，则返回false。 |
+|ReleaseInitiator|String|agent|挂断方：
+
+ -   agent（坐席）
+-   customer（客户） |
+|ReleaseTime|Long|1532707199000|通话结束时间。 |
+|Satisfaction|Integer|1|满意度。 |
+|SatisfactionSurveyChannel|String|IVR|满意度调查渠道。 |
+|SatisfactionSurveyOffered|Boolean|true|是否发送了满意度。 |
 |SkillGroupIds|String|skg-default@ccc-test|参与通话的座席所属的技能组ID，多个技能组以逗号分隔。 |
 |SkillGroupNames|String|默认技能组|参与通话的座席所属的技能组名称，多个技能组以逗号分隔。 |
 |StartTime|Long|1532448000000|通话开始时间，内呼从进入IVR开始，外呼从开始接通计算。 |
@@ -96,13 +108,19 @@ http(s)://[Endpoint]/?Action=ListCallDetailRecords
         <SkillGroupIds>skg-default@ccc-test</SkillGroupIds>
         <CalledNumber>133xxxx2315</CalledNumber>
         <ContactType>Outbound</ContactType>
+        <ReleaseInitiator>agent</ReleaseInitiator>
         <InstanceId>ccc-test</InstanceId>
         <ContactDisposition>Success</ContactDisposition>
+        <Satisfaction>1</Satisfaction>
         <StartTime>1532448000000</StartTime>
         <ContactId>job-76604722428454704</ContactId>
         <CallDuration>30</CallDuration>
         <CallingNumber>053xxxx3128</CallingNumber>
+        <ReleaseTime>1532707199000</ReleaseTime>
+        <RecordingReady>true</RecordingReady>
         <SkillGroupNames>默认技能组</SkillGroupNames>
+        <SatisfactionSurveyChannel>IVR</SatisfactionSurveyChannel>
+        <SatisfactionSurveyOffered>true</SatisfactionSurveyOffered>
         <AgentIds>user-test@ccc-test</AgentIds>
         <EstablishedTime>1532448000000</EstablishedTime>
         <AgentNames>云呼测试坐席</AgentNames>
@@ -126,13 +144,19 @@ http(s)://[Endpoint]/?Action=ListCallDetailRecords
 			"SkillGroupIds": "skg-default@ccc-test",
 			"CalledNumber": "133xxxx2315",
 			"ContactType": "Outbound",
+			"ReleaseInitiator": "agent",
 			"InstanceId": "ccc-test",
 			"ContactDisposition": "Success",
+			"Satisfaction": "1",
 			"StartTime": "1532448000000",
 			"ContactId": "job-76604722428454704",
 			"CallDuration": "30",
 			"CallingNumber": "053xxxx3128",
+			"ReleaseTime": "1532707199000",
+			"RecordingReady": "true",
 			"SkillGroupNames": "默认技能组",
+			"SatisfactionSurveyChannel": "IVR",
+			"SatisfactionSurveyOffered": "true",
 			"AgentIds": "user-test@ccc-test",
 			"EstablishedTime": "1532448000000",
 			"AgentNames": "云呼测试坐席"
