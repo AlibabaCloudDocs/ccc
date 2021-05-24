@@ -36,7 +36,7 @@
 |CallsHandled|Long|0|电话应答数。 |
 |CallsHold|Long|0|被保持的电话数量。一通电话hold多次算一次，多次时间的和加起来算这次的保持时长。 |
 |CallsOffered|Long|0|电话呼入数。 |
-|CallsTransfered|Long|0|电话的转接数，包括咨询转和盲转。 |
+|CallsTransferred|Long|0|被转接的电话数量，包括咨询转和盲转。 |
 |HandleRate|Float|0|应答率，单位%。CallsHandled / CallsQueued |
 |MaxHoldTime|Long|0|最大通话保持时长，单位秒。 |
 |MaxRingTime|Long|0|最大振铃时长，单位秒。 |
