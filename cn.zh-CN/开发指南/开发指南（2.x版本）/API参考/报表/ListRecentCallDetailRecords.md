@@ -12,7 +12,7 @@
 |--|--|----|---|--|
 |Action|String|是|ListRecentCallDetailRecords|系统规定参数。取值：ListRecentCallDetailRecords。 |
 |InstanceId|String|是|ccc-test|呼叫中心实例ID。 |
-|PageNumber|Integer|是|1|页码，范围1-1000。 |
+|PageNumber|Integer|是|1|页码，范围1-100。 |
 |PageSize|Integer|是|10|每页大小，范围1-100。 |
 |StartTime|Long|否|1604638129000|开始时间戳，默认是当天开始时间， 最早为当前时间往前180天。 |
 |EndTime|Long|否|1604639129000|截止时间戳，默认是当前时间。 |
