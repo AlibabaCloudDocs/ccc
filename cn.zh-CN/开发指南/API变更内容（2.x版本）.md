@@ -143,27 +143,27 @@ API变更内容（2.x版本）
 
 
 
-|-------------------------------------------|-----------------------------|---|-------------------------------------------------------------------------------------|
-| ListCallDetailRecords                     | ListCallDetailRecords       | 是 | 2.0 录音信息需要调用录音相关接口，满意度相关信息后续会支持。                                                    |
-| GetConversationDetailByContactId          |                             |   | 待开发。只有开通了智能质检或实时语音文本流的用户才可以正常调用该接口。                                                 |
-| ListRecentCallRecords                     | ListRecentCallDetailRecords | 是 | 无变化                                                                                 |
-| GenerateAgentStatisticReport              | ListHistoricalAgentReport   | 是 | 2.0 入参改为AgentIdList即UserIdList，类型为String，格式\["uid01", "uid02"\]。返回参数格式调整，具体参考API文档。 |
-| GetInstanceSummaryReport                  |                             |   | 即将发布                                                                                |
-| GetInstanceSummaryReportByInterval        |                             |   | 即将发布                                                                                |
-| GetInstanceSummaryReportSinceMidnight     |                             |   | 即将发布                                                                                |
-| ListAgentStates                           | ListRealtimeAgentStates     | 是 | 2.0 新增入参AgentName，支持根据AgentName即坐席姓名模糊查询。                                           |
-| ListAgentStateLogs                        | ListAgentStateLogs          |   | 即将发布                                                                                |
-| ListAgentSummaryReports                   | ListHistoricalAgentReport   | 是 | 2.0 入参改为AgentIdList即UserIdList，类型为String，格式\["uid01", "uid02"\]。                    |
-| ListAgentSummaryReportsByInterval         |                             |   | 即将发布                                                                                |
-| GetAgentData                              | ListHistoricalAgentReport   | 是 | 2.0 参数AgentIdList指定单个坐席时等价于GetAgentData。                                            |
-| ListAgentSummaryReportsSinceMidnight      | ListHistoricalAgentReport   | 是 | 2.0 StartTime，StopTime为选填项，不填默认查询当天的数据。                                             |
-| ListSkillGroupStates                      |                             |   | 即将发布                                                                                |
-| ListSkillGroupSummaryReports              |                             |   | 即将发布                                                                                |
-| ListSkillGroupSummaryReportsByInterval    |                             |   | 即将发布                                                                                |
-| ListSkillGroupSummaryReportsSinceMidnight |                             |   | 即将发布                                                                                |
-| ListCallMeasureSummaryReports             |                             |   | 即将发布                                                                                |
-| ListCallEventDetailByContactId            |                             |   | 即将发布                                                                                |
-| GetCallMeasureSummaryReport               |                             |   | 即将发布                                                                                |
+|-------------------------------------------|--------------------------------|---|-------------------------------------------------------------------------------------------|
+| ListCallDetailRecords                     | ListCallDetailRecords          | 是 | 2.0 录音信息需要调用录音相关接口，已支持满意度统计。                                                              |
+| GetConversationDetailByContactId          |                                |   | 待开发。只有开通了智能质检或实时语音文本流的用户才可以正常调用该接口。                                                       |
+| ListRecentCallRecords                     | ListRecentCallDetailRecords    | 是 | 无变化                                                                                       |
+| GenerateAgentStatisticReport              | ListHistoricalAgentReport      | 是 | 2.0 入参改为AgentIdList即UserIdList，类型为String，格式\["uid01", "uid02"\]。返回参数格式调整，具体参考API文档。       |
+| GetInstanceSummaryReport                  | GetHistoricalInstanceReport    | 是 | 2.0 StartTime，EndTime为选填项，不填默认查询当天的数据。                                                    |
+| GetInstanceSummaryReportByInterval        | ListIntervalInstanceReport     | 是 | 2.0 间隔类型由5分钟改为每小时。StartTime，EndTime为选填项，不填默认查询当天的数据。                                      |
+| GetInstanceSummaryReportSinceMidnight     | GetHistoricalInstanceReport    | 是 | 2.0 StartTime，EndTime为选填项，不填默认查询当天的数据。                                                    |
+| ListAgentStates                           | ListRealtimeAgentStates        | 是 | 2.0 新增入参AgentName，支持根据AgentName即坐席姓名模糊查询。                                                 |
+| ListAgentStateLogs                        | ListAgentStateLogs             | 是 | 2.0 StartTime，EndTime为选填项，不填默认查询当天的数据。查询时间间隔上限由2小时扩展为1天。                                  |
+| ListAgentSummaryReports                   | ListHistoricalAgentReport      | 是 | 2.0 入参改为AgentIdList即UserIdList，类型为String，格式\["uid01", "uid02"\]。                          |
+| ListAgentSummaryReportsByInterval         | ListIntervalAgentReport        | 是 | 2.0 入参由多坐席AgentIds改为单坐席AgentId查询。StartTime，EndTime为选填项。间隔类型由5分钟改为每小时。                     |
+| GetAgentData                              | ListHistoricalAgentReport      | 是 | 2.0 参数AgentIdList指定单个坐席时等价于GetAgentData。                                                  |
+| ListAgentSummaryReportsSinceMidnight      | ListHistoricalAgentReport      | 是 | 2.0 StartTime，StopTime为选填项，不填默认查询当天的数据。                                                   |
+| ListSkillGroupStates                      | ListRealtimeSkillGroupStates   | 是 | 2.0 PageNumber，PageSize改为必填项。SkillGroupIdList参数结构发生变化，具体参考文档中的示例值。                        |
+| ListSkillGroupSummaryReports              | ListHistoricalSkillGroupReport | 是 | 2.0 PageNumber，PageSize改为必填项。StartTime，StopTime为选填项。SkillGroupIdList参数结构发生变化，具体参考文档中的示例值。 |
+| ListSkillGroupSummaryReportsByInterval    | ListIntervalSkillGroupReport   | 是 | 2.0 入参由多技能组SkillGroupIds改为单技能组SkillGroupId查询。去掉分页参数。StartTime，EndTime为选填项。间隔类型由5分钟改为每小时。  |
+| ListSkillGroupSummaryReportsSinceMidnight | ListHistoricalSkillGroupReport | 是 | 2.0 StartTime，StopTime为选填项，不填默认查询当天的数据。                                                   |
+| ListCallMeasureSummaryReports             |                                |   | 即将发布                                                                                      |
+| ListCallEventDetailByContactId            | GetCallDetailRecord            | 是 | 2.0 返回参数结构做了调整，详情参考API文档。                                                                 |
+| GetCallMeasureSummaryReport               |                                |   | 即将发布                                                                                      |
 
 
 
