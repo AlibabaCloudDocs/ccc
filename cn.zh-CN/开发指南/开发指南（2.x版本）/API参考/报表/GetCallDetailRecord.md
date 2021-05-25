@@ -45,7 +45,7 @@
 |QueueId|String|skg-default@ccc-test|队列ID。 |
 |QueueName|String|Defalut|队列名称。 |
 |QueueType|Integer|1|队列类型，1为技能组，2为坐席。 |
-|ContactDisposition|String|Success|电话结束原因。 Success\(正常\)，NoAnswer\(未接通\)，AbandonedInContactFlow\(IVR中放弃\)，AbandonedInQueue\(排队放弃\)，AbandonedRing\(振铃放弃\)，QueueOverflow\(排队超时\)，OneStepTransfer\(转外线\)。 |
+|ContactDisposition|String|Success|电话结束原因。 Success\(正常\)，NoAnswer\(未接通\)，AbandonedInContactFlow\(IVR中放弃\)，AbandonedInQueue\(排队放弃\)，AbandonedRing\(振铃放弃\)，Reject\(客户拒接\)。 |
 |ContactId|String|job-109634426711871319|通话ID。 |
 |ContactType|String|Outbound|通话类型。取值：INBOUND（呼入），OUTBOND（呼出）。 |
 |EstablishedTime|Long|1532458000000|通话建立的时间，如果通话没有建立，此值为空。 |
