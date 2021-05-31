@@ -15,7 +15,7 @@
 |PageNumber|Integer|是|1|分页序号，范围1-100。 |
 |PageSize|Integer|是|100|分页大小，范围1-100。 |
 |AgentIdList|String|否|\["user-test@ccc-test", "user-test2@ccc-test"\]|坐席ID列表。 |
-|StartTime|Long|否|1532448000000|获取的历史数据的起始时间，默认为当天的0时。 |
+|StartTime|Long|否|1532448000000|获取的历史数据的起始时间，默认为当天的0时，最早为当前时间往前180天。 |
 |StopTime|Long|否|1532707199000|获取的历史数据的终止时间，默认为当前时间。 |
 
 ## 返回数据
