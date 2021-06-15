@@ -33,7 +33,7 @@
 -   AbandonedInQueue（排队放弃）
 -   AbandonedRing（振铃放弃）
 -   Reject（客户拒接） |
-|ContactId|String|否|4321444829|通过指定的contactId来查询某一通电话的记录，contactId可以通过软电话SDK发生通话时获取到。 |
+|ContactId|String|否|job-125152394144124921|通过指定的contactId来查询某一通电话的记录，contactId可以通过软电话SDK发生通话时获取到。如果传入该参数，则自动忽略其他查询参数。 |
 |AgentId|String|否|ccc-user@ccc-test|坐席ID。 |
 |SkillGroupId|String|否|skg-default@ccc-test|通话涉及的技能组ID。 |
 |SortOrder|String|否|ASC|如果OrderByField为空，默认按开始时间降序排列。取值: ASC/DESC。 |
@@ -56,8 +56,8 @@
 |CallDuration|String|30|通话时长，单位秒。 |
 |CalledNumber|String|133xxxx2315|被叫号码。 |
 |CallingNumber|String|053xxxx3128|主叫号码。 |
-|ContactDisposition|String|Success|电话结束原因。 Success\(正常\)，NoAnswer\(未接通\)，AbandonedInContactFlow\(IVR中放弃\)，AbandonedInQueue\(排队放弃\)，AbandonedRing\(振铃放弃\)，Reject\(客户拒接\)，OneStepTransfer\(转外线\)。 |
-|ContactId|String|job-76604722428454704|通话ID。 |
+|ContactDisposition|String|Success|电话结束原因。 Success\(正常\)，NoAnswer\(未接通\)，AbandonedInContactFlow\(IVR中放弃\)，AbandonedInQueue\(排队放弃\)，AbandonedRing\(振铃放弃\)，Reject\(客户拒接\)。 |
+|ContactId|String|job-125152394144124921|通话ID。 |
 |ContactType|String|Outbound|通话类型。取值：INBOUND（呼入），OUTBOND（呼出）。 |
 |EstablishedTime|Long|1532448000000|通话建立的时间，如果通话没有建立，此值为空。 |
 |InstanceId|String|ccc-test|呼叫中心实例ID。 |
@@ -113,7 +113,7 @@ http(s)://[Endpoint]/?Action=ListCallDetailRecords
         <ContactDisposition>Success</ContactDisposition>
         <Satisfaction>1</Satisfaction>
         <StartTime>1532448000000</StartTime>
-        <ContactId>job-76604722428454704</ContactId>
+        <ContactId>job-125152394144124921</ContactId>
         <CallDuration>30</CallDuration>
         <CallingNumber>053xxxx3128</CallingNumber>
         <ReleaseTime>1532707199000</ReleaseTime>
@@ -149,7 +149,7 @@ http(s)://[Endpoint]/?Action=ListCallDetailRecords
 			"ContactDisposition": "Success",
 			"Satisfaction": "1",
 			"StartTime": "1532448000000",
-			"ContactId": "job-76604722428454704",
+			"ContactId": "job-125152394144124921",
 			"CallDuration": "30",
 			"CallingNumber": "053xxxx3128",
 			"ReleaseTime": "1532707199000",
