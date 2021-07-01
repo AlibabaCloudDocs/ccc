@@ -35,13 +35,13 @@ API变更内容（2.x版本）
 
 
 
-|--------------------------------------|------------------|---|--------------------------------------|
-| ListIvrTrackingDetail                |                  |   | 即将发布                                 |
-| CreateContactFlow                    |                  |   | 暂不开放，IVR相关的操作目前仅支持在云呼工作台进行。          |
-| CommitContactFlowVersionModification |                  |   | 暂不开放，IVR相关的操作目前仅支持在云呼工作台进行。          |
-| GetRoutePoint                        |                  |   | 2.0 中取消该接口，不再使用路由点这个概念。              |
-| ListContactFlows                     | ListContactFlows | 是 | 2.0 改为分页查询，入参新增了Type字段，支持了根据IVR类型查询。 |
-| PublishContactFlowVersion            |                  |   | 暂不开放，IVR相关的操作目前仅支持在云呼工作台进行。          |
+|--------------------------------------|------------------------|---|-------------------------------------------------------|
+| ListIvrTrackingDetail                | ListIvrTrackingDetails | 是 | 2.0 入参取消除了contactId及分页外的其他非必要参数。返回参数结构做了调整，详情参考API文档。 |
+| CreateContactFlow                    |                        |   | 暂不开放，IVR相关的操作目前仅支持在云呼工作台进行。                           |
+| CommitContactFlowVersionModification |                        |   | 暂不开放，IVR相关的操作目前仅支持在云呼工作台进行。                           |
+| GetRoutePoint                        |                        |   | 2.0 中取消该接口，不再使用路由点这个概念。                               |
+| ListContactFlows                     | ListContactFlows       | 是 | 2.0 改为分页查询，入参新增了Type字段，支持了根据IVR类型查询。                  |
+| PublishContactFlowVersion            |                        |   | 暂不开放，IVR相关的操作目前仅支持在云呼工作台进行。                           |
 
 
 
