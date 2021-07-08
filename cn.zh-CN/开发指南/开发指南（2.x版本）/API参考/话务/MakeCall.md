@@ -51,7 +51,15 @@
 |OutboundScenario|Boolean|false|仅外呼。 |
 |SignedSkillGroupIdList|List|\["skill-group@ccc-test"\]|签入的技能组ID列表。 |
 |UserId|String|user-test@ccc-test|用户ID，格式为username@domain。 |
-|UserState|String|READY|座席状态码。 |
+|UserState|String|READY|座席状态码。包括：
+
+ -   OFFLINE（离线）
+-   BREAK（小休）
+-   READY（就绪，空闲）
+-   DIALING（拨号）
+-   RINGING（振铃）
+-   TALKING（通话）
+-   WORKING（话后处理） |
 |WorkMode|String|ON\_SITE|工作模式。 |
 |HttpStatusCode|Integer|200|HTTP状态码。 |
 |Message|String|无|响应信息。 |
