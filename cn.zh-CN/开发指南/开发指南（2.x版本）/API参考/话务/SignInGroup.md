@@ -1,6 +1,6 @@
 # SignInGroup
 
-调用SignInGroup坐席迁入。
+调用SignInGroup坐席签入。
 
 ## 调试
 
