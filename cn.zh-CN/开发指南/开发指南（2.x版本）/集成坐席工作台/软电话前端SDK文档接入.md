@@ -18,14 +18,14 @@
     <script type="text/javascript" src="//g.alicdn.com/cloudcallcenter/web-workbench-sdk/{version-sdk}/workbenchSdk.min.js"></script>
     以上静态资源，将上面的{version-sdk}和{version-sip}替换为对应的版本号，当前最新版本号为：
     version-sip ==> 0.2.3
-    version-voip ==> 1.1.8
-    version-sdk ==> 1.1.6
+    version-voip ==> 1.2.1
+    version-sdk ==> 1.1.8
 
 
 
-开发模式时web-agentbar-sdk推荐引入index.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-agentbar-sdk-uncompress-build/daily/1.1.8/index.js
+开发模式时web-agentbar-sdk推荐引入index.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-agentbar-sdk-uncompress-build/daily/1.2.1/index.js
 
-开发模式时web-workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-workbench-sdk-uncompress-build/daily/1.1.6/workbenchSdk.js
+开发模式时web-workbench-sdk推荐引入workbenchSdk.js，会有一些打印提示。目前非压缩版本需要从此地址加载：https://cloudcallcenter-stage.oss-cn-hangzhou.aliyuncs.com/all-public/web-workbench-sdk-uncompress-build/daily/1.1.8/workbenchSdk.js
 
 二、初始化SDK 
 -----------------------------
@@ -745,24 +745,29 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。建议�
 
 
 
-| 状态码 |  描述  |        操作        |
-|-----|------|------------------|
-| -1  | 未注册  | 当前状态只能操作register |
-| 0   | 注册中  |                  |
-| 1   | 离线   | 上线               |
-| 2   | 小休   | 置空闲，下线           |
-| 3   | 空闲   | 下线、外呼、接听，发起监听，会议 |
-| 5   | 话后处理 | 置空闲              |
-| 6   | 振铃   | 接听               |
-| 8   | 拨号   | 挂断               |
-| 9   | 呼入通话 | 挂断               |
-| 10  | 呼出通话 | 挂断               |
-| 11  | 内部通话 | 结束通话             |
-| 12  | 通话保持 | 取消通话保持           |
-| 16  | 发起三方 | 通话取回、取消三方通话      |
-| 17  | 咨询通话 | 取消咨询通话、咨询通话转移    |
-| 20  | 被动求助 | 挂断               |
-| 21  | 监听   | 挂断               |
+| 状态码 |     描述      |        操作        |
+|-----|-------------|------------------|
+| -1  | 未注册         | 当前状态只能操作register |
+| 0   | 注册中         |                  |
+| 1   | 离线          | 上线               |
+| 2   | 小休          | 置空闲，下线           |
+| 3   | 空闲          | 下线、外呼、接听，发起监听，会议 |
+| 5   | 话后处理        | 置空闲              |
+| 6   | 振铃          | 接听               |
+| 8   | 拨号          | 挂断               |
+| 9   | 呼入通话        | 挂断               |
+| 10  | 呼出通话        | 挂断               |
+| 11  | 内部通话        | 结束通话             |
+| 12  | 通话保持        | 取消通话保持           |
+| 16  | 发起三方        | 通话取回、取消三方通话      |
+| 17  | 咨询通话        | 取消咨询通话、咨询通话转移    |
+| 20  | 被动求助        | 挂断               |
+| 21  | 监听          | 挂断               |
+| 22  | IVR确认开始     | ------           |
+| 23  | IVR确认结束     | ------           |
+| 24  | 发起监听，还未监听成功 |                  |
+| 25  | 强插，进入三方通话   | 接听、拨打、转接         |
+| 26  | 耳语坐席，进入三方通话 | 接听、拨打            |
 
 
 
@@ -823,7 +828,7 @@ SDK会抛出两种类型的错误：开发错误、操作逻辑错误。建议�
 
 **七、状态说明** 
 
-* 小休状态错误码变成了2
+* 小休状态码变成了2
 
   
 
